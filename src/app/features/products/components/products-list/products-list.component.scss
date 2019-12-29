@@ -1,0 +1,14 @@
+.products-list {
+  //column-count: 4;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-items: center;
+  //justify-content: center;
+}
+
+main {
+  margin-top: 7vh;
+  display: flex;
+
+}

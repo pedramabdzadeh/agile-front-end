@@ -9,7 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
-import { NavgiationModule } from './features/navgiation/navgiation.module';
+import { NavigationModule } from './features/navigation/navigation.module';
 import { ApiManagementModule } from './features/api-management/api-management.module';
 
 @NgModule({
@@ -29,7 +29,7 @@ import { ApiManagementModule } from './features/api-management/api-management.mo
       }
     }),
     EffectsModule.forRoot([AppEffects]),
-    NavgiationModule,
+    NavigationModule,
     ApiManagementModule
   ],
   providers: [],

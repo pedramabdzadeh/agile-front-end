@@ -1,0 +1,13 @@
+<main>
+  <app-top-nav></app-top-nav>
+  <aside>
+
+  </aside>
+  <section>
+    <ul class="products-list">
+      <li *ngFor="let product of products">
+        <app-product-list-item [product]="product"></app-product-list-item>
+      </li>
+    </ul>
+  </section>
+</main>
