@@ -1,0 +1,15 @@
+<div>
+  <img id="logo"  src="../../../../../assets/images/logo.png" alt="logo">
+  <span id="title" *ngIf="!editTitle">
+    {{title}}
+  </span>
+  <input id="title-edit" *ngIf="editTitle" value="{{title}}" placeholder="عنوان" [(ngModel)]="title"
+         (focusout)="editTitle = false">
+  <button id="apply" *ngIf="editTitle" (click)="editTitle = false">
+    Apply
+  </button>
+  <span id="credit">
+    اعتبار: {{'200'}}تومان
+  </span>
+  <img src="../../../../../assets/images/edit.svg" id="edit" (click)="editTitle = true" *ngIf="!editTitle">
+</div>

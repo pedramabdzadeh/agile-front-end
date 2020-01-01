@@ -1,3 +1,12 @@
 <nav>
-
+  <a id="title" routerLink="/home">
+    چابک مارکت
+  </a>
+  <app-top-search></app-top-search>
+  <button id="login" routerLink="/auth/sign-in" *ngIf="!tokenHandlerService.getRefresh()">
+    ورود به حساب کاربری
+  </button>
+  <button id="logout" *ngIf="tokenHandlerService.getRefresh()" (click)="logout()">
+    خروج
+  </button>
 </nav>

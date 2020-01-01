@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {HttpInterceptorService} from './services/http/http-interceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http/http';
+
 
 
 
@@ -7,6 +10,8 @@ import { CommonModule } from '@angular/common';
   declarations: [],
   imports: [
     CommonModule
+  ],
+  providers: [
   ]
 })
 export class ApiManagementModule { }

@@ -1,12 +1,33 @@
 div {
   width: 20vw;
-  margin-left: 10vw;
   background-color: white;
-  height: 35vh;
-  margin-bottom: 5vh;
+  height: 45vh;
   display: flex;
-  border-radius: 10px;
+  flex-direction: column;
+  border: 1px solid lightgrey;
   justify-content: center;
   padding-top: 1%;
+  &:hover {
+    box-shadow: 0 0 10px grey;
+    cursor: pointer;
+  }
+}
 
+.product-title {
+  height: 10%;
+  width: 100%;
+  text-align: center;
+  color: grey;
+}
+
+.product-image {
+  width: 90%;
+  padding-right: 5%;
+  height: 70%;
+}
+
+.product-price {
+  font-weight: bold;
+  color: black;
+  text-align: center;
 }

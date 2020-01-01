@@ -11,6 +11,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { NavigationModule } from './features/navigation/navigation.module';
 import { ApiManagementModule } from './features/api-management/api-management.module';
+import { AuthenticationModule } from './features/authentication/authentication.module';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpInterceptorService} from './features/api-management/services/http/http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -30,9 +33,18 @@ import { ApiManagementModule } from './features/api-management/api-management.mo
     }),
     EffectsModule.forRoot([AppEffects]),
     NavigationModule,
-    ApiManagementModule
+    ApiManagementModule,
+    AuthenticationModule,
+    HttpClientModule,
+
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

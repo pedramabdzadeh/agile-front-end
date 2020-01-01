@@ -1,0 +1,11 @@
+#top-search {
+  width: 30vw;
+  height: 5vh;
+  padding: 3%;
+  border-radius: 10px;
+  border: none;
+  background-color: #f0f0f1;
+  &:focus {
+    outline: none;
+  }
+}

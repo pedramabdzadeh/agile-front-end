@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {TokenHandlerService} from '../../../api-management/services/http/token-handler.service';
+import {ProductService} from '../../../api-management/services/products/product.service';
+import {LoginService} from '../../../authentication/services/login/login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-top-nav',
@@ -7,9 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopNavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tokenHandlerService: TokenHandlerService, private loginService: LoginService,
+              private router: Router) { }
 
   ngOnInit() {
   }
 
+  logout() {
+    this.loginService.logout();
+    this.router.navigate(['/home']);
+  }
 }

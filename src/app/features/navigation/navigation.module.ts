@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TopNavComponent } from './components/top-nav/top-nav.component';
+import {RouterModule} from '@angular/router';
+import {SearchModule} from '../search/search.module';
 
 
 
@@ -10,7 +12,9 @@ import { TopNavComponent } from './components/top-nav/top-nav.component';
     TopNavComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    SearchModule
   ]
 })
 export class NavigationModule { }

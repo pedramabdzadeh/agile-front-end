@@ -1,1 +1,27 @@
-<p>vendor-profile works!</p>
+<app-top-nav></app-top-nav>
+<app-profile-essentials></app-profile-essentials>
+<main>
+  <section>
+    <ul class="products-list">
+      <li *ngFor="let product of products">
+        <app-product-list-item [product]="product"></app-product-list-item>
+      </li>
+      <li *ngIf="!addPanel">
+        <button id="add" (click)="addPanel = true">
+          اضافه کردن محصول جدید
+        </button>
+      </li>
+      <li *ngIf="addPanel" id="add-panel">
+        <label for="title"> عنوان</label>
+        <input type="text" id="title" placeholder="عنوان" [(ngModel)]="newProduct.title" name="title">
+        <label for="price" >قیمت</label>
+        <input type="text" id="price" placeholder="قیمت" [(ngModel)]="newProduct.price" name="price">
+        <label for="image"> عکس</label>
+        <input type="file" id="image" placeholder="عکس">
+        <button (click)="add()">
+          اضافه
+        </button>
+      </li>
+    </ul>
+  </section>
+</main>

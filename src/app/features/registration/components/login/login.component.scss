@@ -6,10 +6,10 @@ div {
   width: 100vw;
   height: 100vh;
 }
-#register-form {
+#login-form {
   display: flex;
   flex-direction: column;
-  height: 90%;
+  height: 50%;
   width: 30%;
   background-color: white;
   border: 1px solid lightgrey;
@@ -47,9 +47,12 @@ div {
     margin-bottom: 5%;
     border-radius: 10px;
     padding-right: 5%;
-    &:hover, &:focus {
+    &:hover {
       outline: none;
-      border: 1px solid darkgrey;
+    }
+    &:focus {
+      outline: none;
+      border: 1px solid grey;
     }
   }
 
@@ -57,16 +60,6 @@ div {
     padding-right: 7%;
     padding-bottom: 1%;
     color: grey;
-  }
-  label[for="vendor"], label[for="buyer"] {
-    display: flex;
-    flex-direction: row;
-    input[type=radio] {
-      padding-right: 0;
-      margin-right: 0;
-      width: 1vw;
-      height: 2vh;
-    }
   }
 
   button {
@@ -86,10 +79,10 @@ div {
       transition: background-color 0.5s linear;
     }
     &:disabled, &:disabled:hover {
-      box-shadow: none;
       border: none;
-      background-color: grey;
       cursor: not-allowed;
+      background-color: grey;
+      box-shadow: none;
     }
   }
 }
@@ -105,4 +98,3 @@ div {
   }
   //text-underline-mode: ;
 }
-

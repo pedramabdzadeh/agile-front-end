@@ -1,1 +1,50 @@
-<p>registration works!</p>
+<div>
+  <form [formGroup]="registerForm" (ngSubmit)="signUp()" id="register-form">
+    <header>
+      ثبت نام در
+      <span routerLink="/home">
+         چابک مارکت
+      </span>
+    </header>
+    <label for="username">
+      ایمیل
+    </label>
+    <input type="email" id="username" name="username" placeholder="ایمیل" autocomplete="username"
+           formControlName="username">
+    <label for="name">
+      نام و نام خانوادگی
+    </label>
+    <input type="text" id="name" name="name" placeholder="نام و نام خانوادگی"
+    formControlName="name">
+    <label for="password" >
+      رمز عبور
+    </label>
+    <input type="password" id="password" autocomplete="new-password" name="password"
+           formControlName="password" placeholder=" رمز عبور">
+
+    <label for="confirm-password">
+تکرار رمز عبور
+    </label>
+    <input type="password" id="confirm-password" autocomplete="new-password" placeholder="رمز عبور"
+           name="confirm-password" formControlName="confirmPassword">
+    <label for="vendor">
+      <input type="radio" name="userType" id="vendor" value="vendor" formControlName="userType">
+        ثبت نام به عنوان فروشنده
+    </label>
+    <label for="buyer">
+      <input type="radio" name="userType" id="buyer" value="buyer" formControlName="userType">
+      ثبت نام به عنوان خریدار
+    </label>
+    <button type="submit" id="login-button"
+            [disabled]="registerForm.controls['confirmPassword'].value !== registerForm.controls['password'].value ||
+    !registerForm.valid">
+      ثبت نام
+    </button>
+    <footer>
+      قبلا ثبت نام کرده اید؟
+      <span class="register-button" routerLink="/auth/sign-in" id="register">
+      وارد شوید
+      </span>
+    </footer>
+  </form>
+</div>
