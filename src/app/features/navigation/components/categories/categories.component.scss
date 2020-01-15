@@ -1,6 +1,7 @@
 .categories {
   position: fixed;
   top: 8vh;
+  z-index: 10;
   height: 8vh;
   background-color: white;
   width: 100vw;
@@ -31,7 +32,7 @@
   top: 8.1vh;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  z-index: 2;
+  z-index: 10;
   margin-right: 1vw;
 }
 
@@ -45,6 +46,7 @@
   margin-right: 1vw;
   cursor: pointer;
 }
+
 
 .page-shadow {
   position: fixed;
@@ -62,5 +64,12 @@
   cursor: pointer;
   &:hover {
     color: #fa1aa7;
+  }
+}
+@media screen and (max-width: 700px) {
+  .categories-btn {
+    width: 100%;
+    text-align: center;
+
   }
 }

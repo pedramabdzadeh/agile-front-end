@@ -6,6 +6,7 @@ import {HttpService} from './services/http/http.service';
 import {TokenHandlerService} from './services/http/token-handler.service';
 import {ProductService} from './services/products/product.service';
 import {CategoryService} from './services/categories/category.service';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material';
 
 
 
@@ -13,7 +14,8 @@ import {CategoryService} from './services/categories/category.service';
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    MatSnackBarModule,
   ],
   providers: [
     HttpService,

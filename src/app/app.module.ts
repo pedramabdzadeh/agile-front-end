@@ -14,10 +14,14 @@ import { ApiManagementModule } from './features/api-management/api-management.mo
 import { AuthenticationModule } from './features/authentication/authentication.module';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {HttpInterceptorService} from './features/api-management/services/http/http-interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import {MatSnackBarModule} from '@angular/material';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +40,8 @@ import {HttpInterceptorService} from './features/api-management/services/http/ht
     ApiManagementModule,
     AuthenticationModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
 
   ],
   providers: [

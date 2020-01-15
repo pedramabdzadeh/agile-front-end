@@ -6,7 +6,7 @@
   <input id="title-edit" *ngIf="editTitle" value="{{title}}" placeholder="عنوان" [(ngModel)]="title"
          (focusout)="editTitle = false">
   <button id="apply" *ngIf="editTitle" (click)="editTitle = false">
-    Apply
+    تایید
   </button>
   <span id="credit">
     اعتبار: {{'200'}}تومان

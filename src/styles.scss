@@ -1,3 +1,5 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
 body {
   margin: 0;
   overflow-x: hidden;
@@ -12,8 +14,10 @@ body {
   flex-wrap: wrap;
   flex-direction: row;
   justify-items: center;
-  margin-right: 5vw;
-  margin-top: 10vh;
+  margin-right: 7vw;
+  margin-top: 15vh;
+  padding-right: 0;
+  //border: 1px solid grey;
   //justify-content: center;
   li {
     list-style-type: none;
@@ -51,3 +55,6 @@ body {
   right: 0;
 }
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

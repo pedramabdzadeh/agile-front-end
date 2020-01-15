@@ -71,3 +71,29 @@ main {
     cursor: pointer;
   }
 }
+
+@media screen and (min-width: 700px) and (max-width: 900px) {
+  #add, #add-panel {
+    width: 40vw;
+  }
+}
+@media screen and (max-width: 700px) {
+  #add, #add-panel {
+    width: 80vw;
+  }
+}
+
+.input-file {
+  z-index: -1;
+  opacity: 0;
+  overflow: hidden;
+  width: 0.1px;
+}
+
+.file-label {
+  cursor: pointer;
+  width: 40% !important;
+  padding: 2%;
+  border-radius: 10px;
+  box-shadow: 0 0 1px black;
+}

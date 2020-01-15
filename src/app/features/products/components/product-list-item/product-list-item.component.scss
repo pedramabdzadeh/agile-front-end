@@ -13,6 +13,18 @@ div {
   }
 }
 
+@media screen and (max-width: 700px) {
+  div {
+    width: 70vw;
+  }
+}
+
+@media screen and (max-width: 900px) and (min-width: 700px){
+  div {
+    width: 40vw;
+  }
+}
+
 .product-title {
   height: 10%;
   width: 100%;
@@ -31,3 +43,4 @@ div {
   color: black;
   text-align: center;
 }
+

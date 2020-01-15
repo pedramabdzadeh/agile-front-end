@@ -9,3 +9,9 @@
     outline: none;
   }
 }
+
+@media screen and (max-width: 700px) {
+  #top-search {
+    width: 60vw;
+  }
+}

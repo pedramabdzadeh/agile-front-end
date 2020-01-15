@@ -3,10 +3,14 @@ import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest}
 import {catchError, filter, switchMap, take} from 'rxjs/operators';
 import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {TokenHandlerService} from './token-handler.service';
+import {MatSnackBar} from '@angular/material';
 
 @Injectable()
 export class HttpInterceptorService implements HttpInterceptor {
-  constructor(private auth: TokenHandlerService) {}
+  constructor(
+    private auth: TokenHandlerService,
+    private matSnackBar: MatSnackBar
+  ) {}
 
   private isRefreshing = false;
   private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
@@ -35,10 +39,10 @@ export class HttpInterceptorService implements HttpInterceptor {
   handleError(error, request, next): Observable<HttpEvent<any>> {
     if (error instanceof HttpErrorResponse && error.status === 401 && localStorage.getItem('token')
     ) {
+      this.matSnackBar.open('', 'بستن');
       return this.handle401Error(request, next);
     } else {
       localStorage.removeItem('token');
-      console.log('error');
       return throwError(error);
     }
   }

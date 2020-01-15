@@ -6,11 +6,12 @@ div {
   width: 100vw;
   height: 100vh;
 }
+
 #register-form {
   display: flex;
   flex-direction: column;
   height: 90%;
-  width: 30%;
+  width: 35%;
   background-color: white;
   border: 1px solid lightgrey;
   header {
@@ -106,3 +107,25 @@ div {
   //text-underline-mode: ;
 }
 
+@media screen and (max-width: 700px){
+  #register-form {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 900px) and (min-width: 700px){
+  #register-form {
+    width: 60%;
+  }
+}
+
+.errorMessage {
+  width: 90%;
+  align-self: center;
+  border-radius: 10px;
+  color: white;
+  background-color: #fa1aa7;
+  margin-bottom: 1%;
+
+  height: 5%;
+}

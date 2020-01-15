@@ -15,9 +15,10 @@
         <label for="title"> عنوان</label>
         <input type="text" id="title" placeholder="عنوان" [(ngModel)]="newProduct.title" name="title">
         <label for="price" >قیمت</label>
-        <input type="text" id="price" placeholder="قیمت" [(ngModel)]="newProduct.price" name="price">
-        <label for="image"> عکس</label>
-        <input type="file" id="image" placeholder="عکس">
+        <input type="number" id="price" placeholder="قیمت" [(ngModel)]="newProduct.price"
+               name="price" step="1000" min="0">
+        <label for="image" class="file-label" (click)="inputFile.click()">  انتخاب عکس</label>
+        <input type="file" id="image" placeholder="عکس" class="input-file" #inputFile>
         <button (click)="add()">
           اضافه
         </button>
