@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpService} from '../http/http.service';
 import {Product} from '../../../products/models/product';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ProductService {
 
   constructor(private httpService: HttpService) { }

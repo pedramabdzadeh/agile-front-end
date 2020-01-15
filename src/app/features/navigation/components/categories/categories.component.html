@@ -1,0 +1,22 @@
+<nav id="categories" class="categories">
+  <a id="categories-btn" (mouseenter)="showCategories() "
+     class="categories-btn hvr-underline-from-center">
+    <span>دسته‌بندی کالاها
+    </span>
+  </a>
+  <div *ngIf="showCats" class="categories-pane">
+    <div class="first-level-cats">
+      <a *ngFor="let category of categories" class="level-one">
+        {{category.name}}
+      </a>
+    </div>
+    <div id="detailed-categories" *ngIf="showCats">
+      <app-second-level-categories>
+      </app-second-level-categories>
+    </div>
+  </div>
+  <div class="page-shadow" *ngIf="showCats" (mouseenter)="hideCategories()">
+
+  </div>
+
+</nav>

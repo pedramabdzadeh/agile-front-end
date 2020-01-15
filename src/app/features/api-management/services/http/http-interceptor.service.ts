@@ -4,9 +4,7 @@ import {catchError, filter, switchMap, take} from 'rxjs/operators';
 import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {TokenHandlerService} from './token-handler.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class HttpInterceptorService implements HttpInterceptor {
   constructor(private auth: TokenHandlerService) {}
 

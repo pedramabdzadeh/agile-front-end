@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpService} from './http.service';
 import {tap} from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TokenHandlerService {
 
   constructor(private httpService: HttpService) { }
