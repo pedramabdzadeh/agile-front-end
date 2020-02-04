@@ -29,7 +29,7 @@ nav {
   0 20px 20px rgba(0,0,0,.15);
 }
 
-#login, #logout, #username {
+#login, #logout, #username, .panel {
   width: 10%;
   position: absolute;
   border: 1px solid grey;
@@ -44,7 +44,15 @@ nav {
     color: mediumvioletred;
   }
 }
-
+#logout, .panel {
+  width: 5%;
+  left: 15% !important;
+  font-size: x-small;
+}
+.panel {
+  left: 9% !important;
+  font-size: x-small !important;
+}
 @media screen and (max-width: 900px) {
   #login, #logout, #username {
     font-size: 8px;

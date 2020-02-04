@@ -1,12 +1,13 @@
-div {
+.container {
   width: 20vw;
   background-color: white;
-  height: 45vh;
+  height: 55vh;
   display: flex;
   flex-direction: column;
   border: 1px solid lightgrey;
   justify-content: center;
   padding-top: 1%;
+  box-sizing: border-box;
   &:hover {
     box-shadow: 0 0 10px grey;
     cursor: pointer;
@@ -14,13 +15,13 @@ div {
 }
 
 @media screen and (max-width: 700px) {
-  div {
+  .container {
     width: 70vw;
   }
 }
 
 @media screen and (max-width: 900px) and (min-width: 700px){
-  div {
+  .container {
     width: 40vw;
   }
 }
@@ -30,10 +31,12 @@ div {
   width: 100%;
   text-align: center;
   color: grey;
+  box-sizing: border-box;
 }
 
 .product-image {
   width: 90%;
+  box-sizing: border-box;
   padding-right: 5%;
   height: 70%;
 }
@@ -44,3 +47,61 @@ div {
   text-align: center;
 }
 
+.add-to-cart {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  padding: 5%;
+}
+
+.add-button {
+  width: 80%;
+  margin-right: auto;
+  box-sizing: border-box;
+  height: 7vh;
+  background-color: #fa1aa7;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px #fa1aa7;
+    transition: box-shadow 0.2s linear;
+  }
+
+}
+
+.item-number {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  height: 100%;
+  align-items: center;
+  button:first-of-type {
+    background-color: white;
+    border: 1px solid #fa1aa7;
+    height: 30%;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+  }
+  span {
+    height: 30%;
+    font-size: small;
+  }
+  button:last-of-type {
+    background-color: white;
+    border: 1px solid #fa1aa7;
+    height: 30%;
+    width: 100%;
+    border-radius: 0 0 20px 20px;
+
+  }
+  button:first-of-type, button:last-of-type {
+    &:hover {
+      cursor: pointer;
+      box-shadow:  0 0 0 2px #fa1aa7;
+    }
+  }
+}

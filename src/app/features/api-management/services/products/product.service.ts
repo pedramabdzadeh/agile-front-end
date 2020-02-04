@@ -7,7 +7,7 @@ export class ProductService {
 
   constructor(private httpService: HttpService) { }
   listProducts() {
-    return this.httpService.get('products/list-products/')
+    return this.httpService.get('products/list-products/');
   }
 
   addProduct(product: Product) {

@@ -9,5 +9,9 @@
   <button id="logout" *ngIf="tokenHandlerService.getRefresh()" (click)="logout()">
     خروج
   </button>
+  <button id="panel" *ngIf="tokenHandlerService.getRefresh()"
+          class="panel" routerLink="/vendor-profile">
+    پنل کاربری
+  </button>
 </nav>
 <app-categories></app-categories>

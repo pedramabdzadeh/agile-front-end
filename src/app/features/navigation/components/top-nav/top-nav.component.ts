@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenHandlerService} from '../../../api-management/services/http/token-handler.service';
-import {ProductService} from '../../../api-management/services/products/product.service';
 import {LoginService} from '../../../authentication/services/login/login.service';
 import {Router} from '@angular/router';
 
@@ -11,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class TopNavComponent implements OnInit {
 
-  constructor(private tokenHandlerService: TokenHandlerService, private loginService: LoginService,
+  constructor(public tokenHandlerService: TokenHandlerService, private loginService: LoginService,
               private router: Router) { }
 
   ngOnInit() {

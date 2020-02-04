@@ -4,6 +4,9 @@
   </aside>
   <section>
     <ul class="products-list">
+      <li *ngIf="products.length === 0">
+        کالایی یافت نشد
+      </li>
       <li *ngFor="let product of products">
         <app-product-list-item [product]="product"></app-product-list-item>
       </li>

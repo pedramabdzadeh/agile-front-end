@@ -21,13 +21,13 @@ export class RegistrationComponent implements OnInit {
     confirmPassword: new FormControl(''),
     userType: new FormControl('', Validators.required)
   });
-  private errorMessage: any;
+  errorMessage: any;
   private selectedInput: string;
 
   constructor(private router: Router, private registerService:RegisterService) { }
 
   ngOnInit() {
-    this.errorHandling()
+    this.errorHandling();
 
   }
 
