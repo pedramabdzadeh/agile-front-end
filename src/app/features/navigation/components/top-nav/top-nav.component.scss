@@ -31,18 +31,21 @@ nav {
 
 #login, #logout, #username, .panel, .cart {
   width: 10%;
-  position: absolute;
   border: 1px solid grey;
   height: 5vh;
+  margin-right: 1%;
   border-radius: 5px;
+  box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0);
-  left: 10%;
   &:hover {
     cursor: pointer;
     border-color: mediumvioletred;
     box-shadow: 0px 0px 5px;
     color: mediumvioletred;
   }
+}
+#logout, #login {
+  margin-right: 32%;
 }
 #logout, .panel {
   width: 5%;
@@ -58,12 +61,22 @@ nav {
     font-size: 8px;
     font-weight: bolder;
   }
+  #login, #logout {
+    margin-right: 2%;
+  }
 }
 
 .cart {
   left: 7vw;
   width: 2vw;
+  //display: flex;
+  box-sizing: border-box;
+  padding-left: 2%;
+  //align-items: center;
+  //justify-content: center;
   .icon {
-    width: 120%;
+    box-sizing: border-box;
+    width: 2vw;
+    height: 2vh;
   }
 }

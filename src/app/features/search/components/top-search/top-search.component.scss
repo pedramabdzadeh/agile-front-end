@@ -7,6 +7,8 @@
   background-color: #f0f0f1;
   &:focus {
     outline: none;
+    background-color: white;
+    box-shadow:  0 0 4px #fa1aa7;
   }
 }
 
