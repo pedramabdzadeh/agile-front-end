@@ -6,6 +6,7 @@ import {SearchModule} from '../search/search.module';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { SecondLevelCategoriesComponent } from './components/categories/second-level-categories/second-level-categories.component';
 import {MatBadgeModule, MatIconModule} from '@angular/material';
+import {SelectDropDownModule} from 'ngx-select-dropdown';
 
 
 
@@ -19,7 +20,8 @@ import {MatBadgeModule, MatIconModule} from '@angular/material';
     RouterModule,
     SearchModule,
     MatIconModule,
-    MatBadgeModule
+    MatBadgeModule,
+    SelectDropDownModule
   ]
 })
 export class NavigationModule { }

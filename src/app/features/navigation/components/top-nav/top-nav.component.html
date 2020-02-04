@@ -13,10 +13,20 @@
           class="panel" routerLink="/vendor-profile">
     پنل کاربری
   </button>
-  <button class="cart" id="cart">
+  <button class="cart" id="cart" (click)="onCartClick()" [ngClass]="cartClass">
     <mat-icon svgIcon="cart" class="icon" [matBadge]="itemsNumber" matBadgeColor="accent" matBadgePosition="below before"
               matBadgeSize="small">
     </mat-icon>
+    <span class="dropdown" *ngIf="cartClick">
+      <span *ngFor="let item of cartItems" class="cart-item">
+        <span>
+          {{item.title}}
+        </span>
+      </span>
+      <button class="order-button">
+        سفارش دهید
+      </button>
+    </span>
   </button>
 </nav>
 <app-categories></app-categories>

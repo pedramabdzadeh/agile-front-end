@@ -4,6 +4,8 @@ import {LoginService} from '../../../authentication/services/login/login.service
 import {Router} from '@angular/router';
 import {MatIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
+import {Product} from '../../../products/models/product';
+import {ProductService} from '../../../api-management/services/products/product.service';
 
 @Component({
   selector: 'app-top-nav',
@@ -11,19 +13,51 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./top-nav.component.scss']
 })
 export class TopNavComponent implements OnInit {
-  itemsNumber: any = 5;
 
-  constructor(public tokenHandlerService: TokenHandlerService, private loginService: LoginService,
+  constructor(public tokenHandlerService: TokenHandlerService, private loginService: LoginService, private productService: ProductService,
               private router: Router, matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer) {
     matIconRegistry.addSvgIcon('cart',
       domSanitizer.bypassSecurityTrustResourceUrl('../../../../../assets/images/smart-cart.svg'));
   }
+  itemsNumber: any = 0;
+  cartClick = false;
+  cartClass: any;
+  cartItems: Product[] = [
+    {category: 1, image: '1', price: 1  , title: '1'},
+    {category: 1, image: '1', price: 1  , title: '1'},
+    {category: 1, image: '1', price: 1  , title: '1'},
+    {category: 1, image: '1', price: 1  , title: '1'},
+    {category: 1, image: '1', price: 1  , title: '1'},
+  ];
+
+  public getCartItems() {
+    this.productService.getCart().subscribe( result => {
+      console.log(result);
+      this.itemsNumber = result[0].products.length;
+      this.cartItems = result[0].products;
+    });
+  }
 
   ngOnInit() {
+    this.getCartItems();
+    this.productService.change$.subscribe(result => {
+      if (result) {
+        this.getCartItems();
+      }
+    });
   }
 
   logout() {
     this.loginService.logout();
     this.router.navigate(['/home']);
+  }
+
+  onCartClick() {
+    this.cartClick = !this.cartClick;
+    if (this.cartClass) {
+      this.cartClass = undefined;
+    } else {
+      this.cartClass = ['focus-cart'];
+    }
   }
 }
