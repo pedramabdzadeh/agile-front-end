@@ -1,0 +1,11 @@
+<div class="container">
+  <button [ngClass]="dropdownBtnClass" (click)="showDropdown = true">
+    {{buttonContent}}
+    <mat-icon [svgIcon]="icon" *ngIf="icon"></mat-icon>
+  </button>
+  <div [ngClass]="dropdownListClass" appClickOver *ngIf="showDropdown" (clickOver)="onClickOver($event)">
+    <a *ngFor="let item of dropdownList">
+      {{item}}
+    </a>
+  </div>
+</div>
