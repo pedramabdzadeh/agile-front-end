@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {SearchModule} from '../search/search.module';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { SecondLevelCategoriesComponent } from './components/categories/second-level-categories/second-level-categories.component';
+import {MatBadgeModule, MatIconModule} from '@angular/material';
 
 
 
@@ -16,7 +17,9 @@ import { SecondLevelCategoriesComponent } from './components/categories/second-l
   imports: [
     CommonModule,
     RouterModule,
-    SearchModule
+    SearchModule,
+    MatIconModule,
+    MatBadgeModule
   ]
 })
 export class NavigationModule { }
