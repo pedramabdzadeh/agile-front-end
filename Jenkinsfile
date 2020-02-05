@@ -18,6 +18,7 @@ pipeline
         }
         stage('save and build')
         {
+            agent any
             steps
             {
                 npm install -save
@@ -26,6 +27,7 @@ pipeline
         }
         stage('deploy')
         {
+            agent any
             steps
             {
                 sh '$(pwd)/deploy ${PRODUCT_PATH}'
