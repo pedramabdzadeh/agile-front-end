@@ -17,6 +17,8 @@ pipeline
             agent any
             steps
             {
+                sh 'ls'
+                sh 'cd agile-front-end'
                 sh 'npm install -save'
                 sh 'ng build --prod --build-optimizer=false'
             }
