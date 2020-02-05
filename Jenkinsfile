@@ -29,7 +29,7 @@ pipeline
                 sh 'ls'
                 sh 'ls dist/'
                 sh 'ls dist/front-end'
-                sh 'sudo $(pwd)/deploy $(pwd)'
+                sh '$(pwd)/deploy $(pwd)'
             }
         }
     }
