@@ -18,7 +18,7 @@ pipeline
             steps
             {
                 sh 'npm install -save'
-                sh 'ng build --prod=true --verbose=true'
+                sh 'ng build --prod --build-optimizer=false'
             }
         }
         stage('deploy')
@@ -26,7 +26,6 @@ pipeline
             agent any
             steps
             {
-                sh 'ls $(pwd)'
                 sh '$(pwd)/deploy $(pwd)'
             }
         }
