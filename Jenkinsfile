@@ -18,7 +18,7 @@ pipeline
             steps
             {
                 sh 'npm install -save'
-                sh 'ng build --prod'
+                sh 'ng build --prod=true --verbose=true'
             }
         }
         stage('deploy')
