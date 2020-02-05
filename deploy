@@ -1,4 +1,4 @@
 #!/bin/bash
 
 
-sudo cp -r $1/dist/front-end/* /var/www/agile.com/
+cp -r $1/dist/front-end/* /var/www/agile.com/
