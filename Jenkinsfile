@@ -1,10 +1,6 @@
 pipeline
 {
     agent none
-    environment
-    {
-	    PRODUCT_PATH = '/home/ubuntu/agile-front-end'
-    }
 
     stages
     {
@@ -22,7 +18,7 @@ pipeline
             steps
             {
                 sh 'npm install -save'
-                sh 'ng build --no-build-optimizer --prod'
+                sh 'ng build --prod'
             }
         }
         stage('deploy')
@@ -30,7 +26,8 @@ pipeline
             agent any
             steps
             {
-                sh '$(pwd)/deploy ${PRODUCT_PATH}'
+                sh 'ls $(pwd)'
+                sh '$(pwd)/deploy $(pwd)'
             }
         }
     }
