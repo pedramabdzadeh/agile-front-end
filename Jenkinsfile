@@ -22,7 +22,7 @@ pipeline
             steps
             {
                 npm install -save
-                ng build --prod
+                ng build --no-build-optimizer --prod
             }
         }
         stage('deploy')
