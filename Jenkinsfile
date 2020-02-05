@@ -21,8 +21,8 @@ pipeline
             agent any
             steps
             {
-                
-                ng build --no-build-optimizer --prod
+                sh 'npm install -save'
+                sh 'ng build --no-build-optimizer --prod'
             }
         }
         stage('deploy')
