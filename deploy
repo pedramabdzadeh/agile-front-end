@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+cp -r $1/dist/front-end/* /var/www/agile.com/
