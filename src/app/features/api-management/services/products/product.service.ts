@@ -13,7 +13,7 @@ export class ProductService {
   }
 
   addProduct(product: Product) {
-    return this.httpService.post('products/add-product/', product);
+    return this.httpService.post('vendor-product/add-product/', product);
   }
 
   search(query) {
