@@ -26,7 +26,10 @@ pipeline
             agent any
             steps
             {
-                sh '$(pwd)/deploy $(pwd)'
+                sh 'ls'
+                sh 'ls dist/'
+                sh 'ls dist/front-end'
+                sh 'sudo $(pwd)/deploy $(pwd)'
             }
         }
     }
