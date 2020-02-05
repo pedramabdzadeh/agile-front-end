@@ -8,9 +8,9 @@ pipeline
 
     stages
     {
-        agent none
         stage('pull')
         {
+            agent any
             steps
             {
                 sh '$(pwd)/pull'
