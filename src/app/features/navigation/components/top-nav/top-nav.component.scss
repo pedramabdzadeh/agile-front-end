@@ -9,6 +9,7 @@ nav {
   flex-direction: row;
   align-items: center;
   padding-right: 5%;
+  z-index: 100;
 }
 #title {
   width: 15%;
@@ -72,11 +73,62 @@ nav {
   //display: flex;
   box-sizing: border-box;
   padding-left: 2%;
+  z-index: 100;
   //align-items: center;
   //justify-content: center;
   .icon {
     box-sizing: border-box;
     width: 2vw;
     height: 2vh;
+  }
+}
+.focus-cart {
+  box-shadow: 0 0 6px #fa1aa7;
+  border: none;
+}
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 8vw;
+  padding: 1%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  box-shadow:  0 0 4px #fa1aa7;
+  z-index: 100 !important;
+  border-radius: 10px;
+  min-height: 20vh;
+  height: auto;
+  width: 15vw;
+  background-color: white;
+}
+
+.order-button {
+  background-color: #fa1aa7;
+  border: 1px solid white;
+  width: 100%;
+  font-weight: bold;
+  box-sizing: border-box;
+  height: 5vh;
+  color: white;
+  border-radius: 10px;
+  margin-top: 1vh;
+  align-self: center;
+  margin-bottom: 1vh;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0 2px #fa1aa7;
+  }
+}
+
+.cart-item {
+  height: 4vh;
+  display:flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  border-bottom: 1px solid lightgrey;
+  span {
+    color: dimgrey;
   }
 }

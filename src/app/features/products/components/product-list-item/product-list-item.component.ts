@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../../models/product';
+import {ProductService} from '../../../api-management/services/products/product.service';
 
 @Component({
   selector: 'app-product-list-item',
@@ -9,9 +10,14 @@ import {Product} from '../../models/product';
 export class ProductListItemComponent implements OnInit {
   @Input() product: Product;
   numberOfItems: number = 1;
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
   }
 
+  addToCart() {
+    this.productService.addToCart(this.product.id).subscribe( result => {
+        this.productService.change$.next(true);
+    });
+  }
 }
