@@ -21,7 +21,7 @@ pipeline
             agent { label 'nodejs8' }
             steps
             {
-                sudo npm install -save
+                npm install -save
                 ng build --prod
             }
         }
