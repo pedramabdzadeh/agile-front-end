@@ -18,7 +18,6 @@ pipeline
         }
         stage('save and build')
         {
-            agent { label 'nodejs8' }
             steps
             {
                 npm install -save
