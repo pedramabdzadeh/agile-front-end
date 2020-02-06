@@ -1,4 +1,5 @@
 #!/bin/bash
 
 
+rm -rf /var/www/agile.com/*
 cp -r $1/dist/front-end/* /var/www/agile.com/
