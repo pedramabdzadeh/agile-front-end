@@ -22,7 +22,7 @@ export class ProductService {
   }
 
   addToCart(id: string) {
-    return this.httpService.post('purchase/add-cart/', {id});
+    return this.httpService.put('purchase/cart/' + id + '/', {id});
   }
 
   getCart() {
