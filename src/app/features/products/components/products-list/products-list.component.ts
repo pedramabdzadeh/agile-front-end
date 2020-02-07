@@ -15,7 +15,6 @@ export class ProductsListComponent implements OnInit {
 
   ngOnInit() {
     this.products = [];
-    console.log(this.route.snapshot.queryParams);
 
     this.route.queryParamMap.subscribe(
       data => {

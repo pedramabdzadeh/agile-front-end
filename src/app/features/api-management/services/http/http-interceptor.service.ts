@@ -17,7 +17,6 @@ export class HttpInterceptorService implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
-    console.log(token);
     if (token) {
       request = this.addToken(request, token);
     }
@@ -27,7 +26,6 @@ export class HttpInterceptorService implements HttpInterceptor {
   }
 
   private addToken(request: HttpRequest<any>, token: string) {
-    console.log(request);
     return request.clone({
       setHeaders: {
         Authorization: 'Bearer ' + token
@@ -35,7 +33,6 @@ export class HttpInterceptorService implements HttpInterceptor {
     });
   }
 
-// && error.error.detail === 'Token is invalid or expired.'
   handleError(error, request, next): Observable<HttpEvent<any>> {
     if (error instanceof HttpErrorResponse && error.status === 401 && localStorage.getItem('token')
     ) {
@@ -51,7 +48,6 @@ export class HttpInterceptorService implements HttpInterceptor {
     if (!this.isRefreshing) {
       this.isRefreshing = true;
       this.refreshTokenSubject.next(null);
-      console.error('Token Expired');
       return this.auth.refreshToken().pipe(
         switchMap((token: any) => {
           this.isRefreshing = false;

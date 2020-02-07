@@ -6,7 +6,7 @@ import {BehaviorSubject} from 'rxjs';
 @Injectable()
 export class ProductService {
   change$ = new BehaviorSubject(false);
-
+  id: number;
   constructor(private httpService: HttpService) { }
   listProducts() {
     return this.httpService.get('products/list-products/');
@@ -17,12 +17,11 @@ export class ProductService {
   }
 
   search(query) {
-    console.log(query);
     return this.httpService.get('products/list-products/?search=' + query);
   }
 
   addToCart(id: string) {
-    return this.httpService.put('purchase/cart/' + id + '/', {id});
+    return this.httpService.put('purchase/cart/' + this.id + '/', {id});
   }
 
   getCart() {

@@ -32,7 +32,7 @@ export class TopNavComponent implements OnInit {
 
   public getCartItems() {
     this.productService.getCart().subscribe( result => {
-      console.log(result);
+      this.productService.id = result[0].id;
       this.itemsNumber = result[0].products.length;
       this.cartItems = result[0].products;
     });
