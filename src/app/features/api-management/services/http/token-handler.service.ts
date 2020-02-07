@@ -29,7 +29,6 @@ export class TokenHandlerService {
     localStorage.setItem('refresh', refreshToken);
   }
   getRefresh() {
-    console.log(localStorage.getItem('refresh'));
     return localStorage.getItem('refresh');
   }
 }
