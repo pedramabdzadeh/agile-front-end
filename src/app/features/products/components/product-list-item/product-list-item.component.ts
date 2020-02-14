@@ -37,4 +37,8 @@ export class ProductListItemComponent implements OnInit {
       this.productService.productsChange$.next(true);
     });
   }
+
+  getUser(): {username, type, name} {
+    return this.loginService.getUser();
+  }
 }

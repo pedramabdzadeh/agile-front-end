@@ -3,13 +3,13 @@
     چابک مارکت
   </a>
   <app-top-search></app-top-search>
-  <button id="login" routerLink="/auth/sign-in" *ngIf="!loginService.isLoggedIn()">
+  <button id="login" routerLink="/auth/sign-in" *ngIf="!isLoggedIn()">
     ورود به حساب کاربری
   </button>
-  <button id="logout" *ngIf="loginService.isLoggedIn()" (click)="logout()">
+  <button id="logout" *ngIf="isLoggedIn()" (click)="logout()">
     خروج
   </button>
-  <button id="panel" *ngIf="loginService.isLoggedIn()"
+  <button id="panel" *ngIf="isLoggedIn()"
           class="panel" (click)="goToPanel()">
     پنل کاربری
   </button>

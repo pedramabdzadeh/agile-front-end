@@ -84,4 +84,8 @@ export class TopNavComponent implements OnInit {
 
     }
   }
+
+  isLoggedIn() {
+    return this.loginService.isLoggedIn();
+  }
 }
