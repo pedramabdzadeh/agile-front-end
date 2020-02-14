@@ -15,8 +15,19 @@ export class RegisterService {
     private matSnackBar: MatSnackBar,
     ) { }
 
-  register(user: {email, password, name}) {
+  registerVendor(user: {email, password, name}) {
     this.httpService.post('accounts/vendor-registration/', user).subscribe(
+      data => {
+        this.router.navigate(['/auth/login']).then(r =>
+          this.matSnackBar.open('ثبت نام با موفقیت انجام شد.', 'X'));
+      },
+      (error: HttpErrorResponse) =>  {
+        this.matSnackBar.open('مشکلی پیش آمده لطفا دوباره تلاش کنید.', 'X');
+      }
+    );
+  }
+  registerBuyer(user: {email, password, name}) {
+    this.httpService.post('accounts/buyer-registration/', user).subscribe(
       data => {
         this.router.navigate(['/auth/login']).then(r =>
           this.matSnackBar.open('ثبت نام با موفقیت انجام شد.', 'X'));

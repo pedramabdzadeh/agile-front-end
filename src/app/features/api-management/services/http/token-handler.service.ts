@@ -1,26 +1,27 @@
 import { Injectable } from '@angular/core';
 import {HttpService} from './http.service';
 import {tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class TokenHandlerService {
 
   constructor(private httpService: HttpService) { }
 
-  setToken(token) {
+  setToken(token): void {
     localStorage.setItem('token', token);
   }
 
-  getToken() {
+  getToken(): string {
     return localStorage.getItem('token');
   }
 
-  refreshToken() {
-    return this.httpService.post('/accounts/token/refresh/', {
-      refresh: JSON.stringify(this.getRefresh())
+  refreshToken(): Observable<any> {
+    return this.httpService.post('accounts/token/refresh/', {
+      refresh: this.getRefresh()
     }).pipe(tap(
-      (data) => {
-        this.setToken(data['access']);
+      (data: {access: string, refresh: string}) => {
+        this.setToken(data.access);
       }
     ));
   }
@@ -28,7 +29,7 @@ export class TokenHandlerService {
   setRefresh(refreshToken: any) {
     localStorage.setItem('refresh', refreshToken);
   }
-  getRefresh() {
+  getRefresh(): string {
     return localStorage.getItem('refresh');
   }
 }

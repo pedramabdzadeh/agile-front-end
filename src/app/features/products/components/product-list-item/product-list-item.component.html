@@ -1,5 +1,9 @@
 <div class="container">
+  <button class="delete-item" *ngIf="canDelete()" (click)="deleteItem()">
+    حذف کالا
+  </button>
   <img class="product-image" src="../../../../../assets/images/nintendo.jpg" [alt]="product.title"/>
+
   <span class="product-title">
     <strong>
       {{product.title}}
@@ -7,24 +11,11 @@
   </span>
 
   <span class="product-price">
-    {{product.price}}تومان
+    {{product.price}} تومان
   </span>
   <div class="add-to-cart">
-    <div class="item-number">
-      <button (click)="numberOfItems = numberOfItems + 1;">
-
-      </button>
-      <span>
-        {{numberOfItems}}
-      </span>
-      <button (click)="numberOfItems = numberOfItems > 2 ? numberOfItems - 1 : 1">
-
-      </button>
-    </div>
-    <button class="add-button" (click)="addToCart()">
+    <button class="add-button" (click)="addToCart()" *ngIf="loginService.getUser().type === 'buyer'">
       افزودن به سبد خرید
     </button>
-
   </div>
-
 </div>

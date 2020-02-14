@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Product} from '../products/models/product';
 import {ProductService} from '../api-management/services/products/product.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {AccountsService} from '../api-management/services/accounts/accounts.service';
 
 @Component({
   selector: 'app-vendor-profile',
@@ -12,23 +13,31 @@ export class VendorProfileComponent implements OnInit {
   products: Product[];
   addPanel: boolean;
   newProduct: Product;
-  constructor(private productService: ProductService, private route: ActivatedRoute) { }
+  constructor(
+    private productService: ProductService,
+    private accountsService: AccountsService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.newProduct = new Product();
     this.products = [];
-    console.log(this.route.snapshot.queryParams);
-
+    this.productService.productsChange$.subscribe(() => {
+      this.getProducts();
+    });
     this.route.queryParamMap.subscribe(
       data => {
-        if (this.route.snapshot.queryParams.q) {
-          this.productService.search(this.route.snapshot.queryParams.q).subscribe(
-            (d: Product[]) => this.products = d
+        if (
+          this.route.snapshot.queryParams.q
+          || this.route.snapshot.queryParams.categoryID
+          || this.route.snapshot.queryParams.sort) {
+          this.productService.listProducts(this.route.snapshot.queryParams.q, this.route.snapshot.queryParams.categoryID,
+            this.route.snapshot.queryParams.sort).subscribe(
+            (product: Product[]) => {
+              this.products = product;
+            }
           );
-        } else {
-          this.productService.listProducts().subscribe(
-            (d: Product[]) => this.products = d
-          );
+        }  else {
+          this.getProducts();
         }
       }
     );
@@ -40,6 +49,11 @@ export class VendorProfileComponent implements OnInit {
       data => this.productService.listProducts().subscribe(
         (d: Product[]) => this.products = d
       )
+    );
+  }
+  getProducts() {
+    this.productService.listVendorProducts().subscribe(
+      (d: Product[]) => this.products = d
     );
   }
 }

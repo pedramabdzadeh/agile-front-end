@@ -33,12 +33,18 @@ export class RegistrationComponent implements OnInit {
 
   signUp() {
     // this.router.navigate(['/vendor-profile']);
+    // console.log(this.registerForm.controls['userType'].value);
     const user  = {
       email: this.registerForm.controls['username'].value,
       password: this.registerForm.controls['password'].value,
       name: this.registerForm.controls['name'].value
     };
-    this.registerService.register(user);
+    if (this.registerForm.controls.userType.value  === 'vendor') {
+      this.registerService.registerVendor(user);
+    } else {
+      this.registerService.registerBuyer(user);
+    }
+
   }
 
   errorHandling() {
@@ -56,7 +62,8 @@ export class RegistrationComponent implements OnInit {
   }
 
   detectError() {
-    if (!this.registerForm.controls[this.selectedInput].valid) {
+    if (this.registerForm.controls[this.selectedInput] &&
+      !this.registerForm.controls[this.selectedInput].valid) {
       switch (this.selectedInput) {
         case 'password':
           this.errorMessage = 'رمز عبور حداقل ۸ کاراکتر شامل حروف بزرگ و عدد است.';
@@ -67,6 +74,10 @@ export class RegistrationComponent implements OnInit {
         case 'name':
           this.errorMessage = 'نام خود را وارد کنید.';
       }
+    } else if(this.registerForm.controls.confirmPassword &&
+      this.registerForm.controls.confirmPassword !== this.registerForm.controls.password) {
+      this.errorMessage = 'تکرار رمز عبور نادرست می باشد';
+
     }
   }
 

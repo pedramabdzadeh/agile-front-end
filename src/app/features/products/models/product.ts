@@ -1,7 +1,13 @@
+import {Field} from './field';
+
 export class Product {
   title: string;
   price: number;
-  image: string;
+  image: any;
   category?: number;
-  id?: string;
+  id: string;
+  express?: boolean;
+  archived?: boolean;
+  specifications: Field[];
+  vendor?: number;
 }

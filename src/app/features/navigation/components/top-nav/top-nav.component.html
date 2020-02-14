@@ -2,18 +2,18 @@
   <a id="title" routerLink="/home">
     چابک مارکت
   </a>
-<!--  <app-top-search></app-top-search>-->
-  <button id="login" routerLink="/auth/sign-in" *ngIf="!tokenHandlerService.getRefresh()">
+  <app-top-search></app-top-search>
+  <button id="login" routerLink="/auth/sign-in" *ngIf="!loginService.isLoggedIn()">
     ورود به حساب کاربری
   </button>
-  <button id="logout" *ngIf="tokenHandlerService.getRefresh()" (click)="logout()">
+  <button id="logout" *ngIf="loginService.isLoggedIn()" (click)="logout()">
     خروج
   </button>
-  <button id="panel" *ngIf="tokenHandlerService.getRefresh()"
-          class="panel" routerLink="/vendor-profile">
+  <button id="panel" *ngIf="loginService.isLoggedIn()"
+          class="panel" (click)="goToPanel()">
     پنل کاربری
   </button>
-  <button class="cart" *ngIf="tokenHandlerService.getRefresh()" id="cart" (click)="onCartClick()" [ngClass]="cartClass">
+  <button class="cart" *ngIf="canShowCart()" id="cart" (click)="onCartClick()" [ngClass]="cartClass">
     <mat-icon svgIcon="cart" class="icon" [matBadge]="itemsNumber" matBadgeColor="accent" matBadgePosition="below before"
               matBadgeSize="small">
     </mat-icon>
@@ -21,6 +21,10 @@
       <span *ngFor="let item of cartItems" class="cart-item">
         <span>
           {{item.title}}
+        </span>
+        <span (click)="deleteItem(+item.id)">
+          <mat-icon svgIcon="bin" >
+          </mat-icon>
         </span>
       </span>
       <button class="order-button">

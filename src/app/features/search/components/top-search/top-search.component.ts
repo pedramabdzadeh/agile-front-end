@@ -19,6 +19,7 @@ export class TopSearchComponent implements OnInit {
       queryParams: {
         q: this.query
       },
+      queryParamsHandling: 'merge'
     };
     // this.router.navigate(['/home'])
     // this.router.navigate(['/home'], navigationExtras);

@@ -36,7 +36,6 @@ export class HttpInterceptorService implements HttpInterceptor {
   handleError(error, request, next): Observable<HttpEvent<any>> {
     if (error instanceof HttpErrorResponse && error.status === 401 && localStorage.getItem('token')
     ) {
-      this.matSnackBar.open('', 'بستن');
       return this.handle401Error(request, next);
     } else {
       localStorage.removeItem('token');
@@ -48,13 +47,13 @@ export class HttpInterceptorService implements HttpInterceptor {
     if (!this.isRefreshing) {
       this.isRefreshing = true;
       this.refreshTokenSubject.next(null);
+
       return this.auth.refreshToken().pipe(
         switchMap((token: any) => {
           this.isRefreshing = false;
           this.refreshTokenSubject.next(token.access);
           return next.handle(this.addToken(request, token.access));
-        }));
-
+      }));
     } else {
       return this.refreshTokenSubject.pipe(
         filter(token => token != null),

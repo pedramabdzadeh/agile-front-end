@@ -9,7 +9,7 @@ import {HttpErrorResponse} from '@angular/common/http';
   providedIn: 'root'
 })
 export class LoginService {
-
+  user: {name: string, type: string, username: string};
   constructor(
     private tokenHandlerService: TokenHandlerService,
     private matSnackBar: MatSnackBar,
@@ -17,17 +17,32 @@ export class LoginService {
 
   login(user) {
     this.httpService.post('accounts/token/', user).subscribe(
-      data => {
-        this.tokenHandlerService.setToken(data['access']);
-        this.tokenHandlerService.setRefresh(data['refresh']);
-        this.router.navigate(['/vendor-profile']);
-        this.matSnackBar.open('خوش آمدید.', 'X');
+      (data: {access: string, refresh: string}) => {
+        this.tokenHandlerService.setToken(data.access);
+        this.tokenHandlerService.setRefresh(data.refresh);
+        this.httpService.get('accounts/get-type/').subscribe((result:{name: string, type: string, username: string}) => {
+          this.user = result;
+          localStorage.setItem('user', JSON.stringify(this.user));
+          if (this.user.type === 'vendor') {
+            this.router.navigate(['/vendor-profile']).then();
+          } else if (this.user.type === 'buyer') {
+            this.router.navigate(['/home']).then();
+          }
+        });
+
+        this.matSnackBar.open('خوش آمدید.', 'X', {
+          duration: 3000
+        });
       },
       (error: HttpErrorResponse) => {
         if (error.status === 401) {
-          this.matSnackBar.open('اطلاعات ورودی صحیح نمی باشد. ', 'X');
+          this.matSnackBar.open('اطلاعات ورودی صحیح نمی باشد. ', 'X', {
+            duration: 3000
+          });
         } else {
-          this.matSnackBar.open('خطا در ارتباط با سرور ', 'X');
+          this.matSnackBar.open('خطا در ارتباط با سرور ', 'X', {
+            duration: 3000
+          });
         }
       }
     );
@@ -40,5 +55,9 @@ export class LoginService {
   logout() {
     localStorage.removeItem('refresh');
     localStorage.removeItem('token');
+  }
+
+  getUser(): {username: string, type: string, name: string} {
+    return JSON.parse(localStorage.getItem('user'));
   }
 }

@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import {ProductsListComponent} from './features/products/components/products-list/products-list.component';
 import {AuthGuard} from './guards/auth/auth.guard';
 import {NotFoundComponent} from './components/not-found/not-found.component';
+import {ProductDetailsComponent} from './features/products/components/product-details/product-details.component';
+import {VendorGuard} from './guards/vendor.guard';
 
 
 const routes: Routes = [
@@ -12,7 +14,7 @@ const routes: Routes = [
       .then(m => m.BuyerProfileModule) },
   {
     path: 'vendor-profile',
-    canLoad: [AuthGuard],
+    canLoad: [VendorGuard],
     loadChildren: () => import('./features/vendor-profile/vendor-profile.module')
       .then(m => m.VendorProfileModule)
   },
@@ -24,6 +26,13 @@ const routes: Routes = [
     path: 'home', component: ProductsListComponent
   },
   {
+    path: 'products', component: ProductsListComponent
+  },
+  {
+    path: 'products/:product-id',
+    component: ProductDetailsComponent
+  },
+  {
     path: '', redirectTo: '/home', pathMatch: 'full'
   },
   {
@@ -31,11 +40,11 @@ const routes: Routes = [
   },
   {
     path: 'not-found', component: NotFoundComponent
-  }
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

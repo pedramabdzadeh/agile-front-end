@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Category} from '../../../../models/category';
 import {CategoryService} from '../../../api-management/services/categories/category.service';
+import {ProductService} from '../../../api-management/services/products/product.service';
+import {NavigationExtras, Router} from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -12,6 +14,8 @@ export class CategoriesComponent implements OnInit {
   showCats = false;
   constructor(
     private categoryService: CategoryService,
+    private productService: ProductService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -32,5 +36,15 @@ export class CategoriesComponent implements OnInit {
 
   hideCategories() {
     this.showCats = false;
+  }
+
+  onCategoryClick(category: Category) {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        categoryID: category.id,
+      },
+      queryParamsHandling: 'merge'
+    };
+    this.router.navigate(['/products'], navigationExtras).then();
   }
 }

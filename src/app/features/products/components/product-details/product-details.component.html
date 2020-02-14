@@ -1,0 +1,68 @@
+<app-top-nav>
+
+</app-top-nav>
+
+<main class="product-details">
+  <div class="category">
+    {{(product$|async)?.category}}
+  </div>
+
+  <div class="product-intro">
+    <div class="express" *ngIf="(product$|async)?.express">
+      <span>
+        پیشنهاد ویژه
+      </span>
+    </div>
+    <div class="images">
+      <img src="../../../../../assets/images/nintendo.jpg">
+
+    </div>
+    <div class="descriptions">
+      <div class="title">
+        {{(product$|async)?.title}}
+      </div>
+      <div class="other">
+        <div class="product-part">
+
+        </div>
+        <div class="vendor-part">
+          <div class="vendor-name">
+            <label>
+              فروشنده
+            </label>
+               {{(product$|async)?.vendor}}
+          </div>
+          <div class="price">
+            <span>
+              {{(product$|async)?.price}}
+              <span>
+                تومان
+              </span>
+            </span>
+
+          </div>
+          <button class="add-to-cart">
+            افزودن به سبد خرید
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec-title">
+      <span>
+              مشخصات
+      </span>
+    </div>
+    <div class="spec-body">
+      <div class="field" *ngFor="let field of (product$|async)?.specifications">
+        <div class="field-title">
+            {{field.field_name}}
+        </div>
+        <div class="field-value">
+          {{field.value}}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

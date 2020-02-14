@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from '../../models/product';
 import {ProductService} from '../../../api-management/services/products/product.service';
-import {ActivatedRoute, Route} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-products-list',
@@ -15,21 +15,30 @@ export class ProductsListComponent implements OnInit {
 
   ngOnInit() {
     this.products = [];
-
+    this.productService.productsChange$.subscribe(() => {
+      this.getProducts();
+    });
     this.route.queryParamMap.subscribe(
-      data => {
-        if (this.route.snapshot.queryParams.q) {
-          this.productService.search(this.route.snapshot.queryParams.q).subscribe(
-            (d: Product[]) => this.products = d
+      () => {
+        if (this.route.snapshot.queryParams.q || this.route.snapshot.queryParams.categoryID || this.route.snapshot.queryParams.sort) {
+          this.productService.listProducts(this.route.snapshot.queryParams.q, this.route.snapshot.queryParams.categoryID,
+            this.route.snapshot.queryParams.sort).subscribe(
+            (d: Product[]) => {
+              this.products = d;
+            }
           );
-        } else {
-          this.productService.listProducts().subscribe(
-            (d: Product[]) => this.products = d
-          );
+        }  else {
+          this.getProducts();
         }
       }
     );
-
   }
 
+  getProducts(): void {
+    this.productService.listProducts().subscribe(
+      (d: Product[]) => {
+        this.products = d;
+      }
+    );
+  }
 }

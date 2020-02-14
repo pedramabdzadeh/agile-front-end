@@ -6,7 +6,7 @@
   </a>
   <div *ngIf="showCats" class="categories-pane">
     <div class="first-level-cats">
-      <a *ngFor="let category of categories" class="level-one">
+      <a *ngFor="let category of categories" class="level-one" (click)="onCategoryClick(category)">
         {{category.name}}
       </a>
     </div>
