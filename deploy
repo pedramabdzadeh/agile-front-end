@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+set -o pipefail
 
 rm -rf /var/www/agile.com/*
 cp -r $1/dist/front-end/* /var/www/agile.com/
