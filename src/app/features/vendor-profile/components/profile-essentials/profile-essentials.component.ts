@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-profile-essentials',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileEssentialsComponent implements OnInit {
   editTitle: boolean;
-  title = 'شرکت نینتندو';
+  @Input() title = 'شرکت نینتندو';
 
   constructor() { }
 

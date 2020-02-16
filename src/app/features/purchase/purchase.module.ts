@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { PurchaseRoutingModule } from './purchase-routing.module';
 import { PurchaseComponent } from './purchase.component';
 import {NavigationModule} from '../navigation/navigation.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatRadioModule} from '@angular/material';
 
 
 @NgModule({
@@ -11,7 +13,10 @@ import {NavigationModule} from '../navigation/navigation.module';
   imports: [
     CommonModule,
     PurchaseRoutingModule,
-    NavigationModule
+    NavigationModule,
+    ReactiveFormsModule,
+    MatRadioModule,
+    FormsModule
   ]
 })
 export class PurchaseModule { }

@@ -10,14 +10,17 @@ import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
-  declarations: [VendorProfileComponent, ProfileEssentialsComponent],
-  imports: [
-    CommonModule,
-    VendorProfileRoutingModule,
-    NavigationModule,
-    ProductsModule,
-    FormsModule
+    declarations: [VendorProfileComponent, ProfileEssentialsComponent],
+    exports: [
+        ProfileEssentialsComponent
+    ],
+    imports: [
+        CommonModule,
+        VendorProfileRoutingModule,
+        NavigationModule,
+        ProductsModule,
+        FormsModule
 
-  ]
+    ]
 })
 export class VendorProfileModule { }

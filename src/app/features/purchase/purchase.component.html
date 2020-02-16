@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="cart-item" *ngFor="let item of (cart)?.products">
-      <div class="item-title">
+      <div class="item-title" routerLink="/products/{{item.id}}">
         <span>
           {{item.title}}
         </span>
@@ -38,7 +38,7 @@
         </span>
           تومان
       </div>
-      <button class="delete-item">
+      <button class="delete-item" (click)="deleteFromCart(item.id)">
         حذف
       </button>
     </div>
@@ -52,5 +52,82 @@
     </div>
 
   </div>
+  <div class="delivery-details">
+    <div class="title">
+      <span>
+        جزییات تحویل
+      </span>
+    </div>
+      <div class="body">
+        <form [formGroup]="deliveryForm" (ngSubmit)="submitForm()">
+          <div class="header">
+            انتخاب آدرس*
+          </div>
+          <div *ngIf="!showNewAddress" class="new-address">
+            <label for="new-address">
+              آدرس جدید
+            </label>
+            <input placeholder="آدرس جدید" id="new-address"  formControlName="newAddress"
+                   #addressInput required>
+            <button (click)="addNewAddress(addressInput.value)" [disabled]="!deliveryForm.get('newAddress').valid">
+              افزودن
+            </button>
+          </div>
+          <mat-radio-group formControlName="address">
+            <mat-radio-button [value]="userDeliveryDetails.address" *ngIf="(userDeliveryDetails)?.address">
+              {{userDeliveryDetails.address}}
+            </mat-radio-button>
+            <mat-radio-button *ngIf="showNewAddress" [value]="newAddress">{{deliveryForm.get('newAddress').value}}
+            </mat-radio-button>
+          </mat-radio-group>
+          <div class="header">
+            انتخاب شماره تلفن*
+          </div>
+          <div *ngIf="!showNewPhone" class="new-address" >
+            <label for="new-phone">
+              شماره تلفن جدید
+            </label>
+            <input placeholder="...902" id="new-phone"  formControlName="newPhone" (focus)="inputFocus = true"
+                   (focusout)="inputFocus= false"
+                   type="number" #addressInput required>
+            <div class="new-address mat-error mat-small" *ngIf="!deliveryForm.get('newPhone').valid && inputFocus" >
+              لطفا شماره تلفن صحیح وارد نمایید
+            </div>
+            <span>
+              98+
+            </span>
 
+            <button (click)="addNewPhone(addressInput.value)" [disabled]="!deliveryForm.get('newPhone').valid">
+              افزودن
+            </button>
+
+          </div>
+
+          <mat-radio-group formControlName="phone" *ngIf="showNewPhone || (userDeliveryDetails)?.phone_number">
+            <mat-radio-button [value]="userDeliveryDetails.phone_number"
+                              *ngIf="userDeliveryDetails && (userDeliveryDetails)?.phone_number">
+              {{userDeliveryDetails.phone_number}}
+            </mat-radio-button>
+            <mat-radio-button *ngIf="showNewPhone" [value]="newPhone">{{deliveryForm.get('newPhone').value}}
+            </mat-radio-button>
+          </mat-radio-group>
+          <div class="header">
+            انتخاب زمان تحویل*
+          </div>
+          <mat-radio-group formControlName="deliveryTime">
+            <mat-radio-button *ngFor="let date of dates" [value]="date">
+              {{date}}
+            </mat-radio-button>
+          </mat-radio-group>
+          <button class="payment" [disabled]="!deliveryForm.get('phone').valid || !deliveryForm.get('address').valid
+          || !deliveryForm.get('deliveryTime').valid" type="submit">
+            پرداخت
+          </button>
+        </form>
+      </div>
+
+
+
+
+  </div>
 </main>

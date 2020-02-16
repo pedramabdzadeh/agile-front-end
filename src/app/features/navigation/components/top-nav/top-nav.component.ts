@@ -67,7 +67,7 @@ export class TopNavComponent implements OnInit {
   }
 
   canShowCart(): boolean {
-    if (this.loginService.isLoggedIn()) {
+    if (this.loginService.isLoggedIn() && !this.router.url.includes('purchase')) {
       if (this.loginService.getUser().type === 'buyer') {
         return true;
       }

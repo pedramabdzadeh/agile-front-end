@@ -7,11 +7,4 @@ export class AccountsService {
 
   constructor(private httpService: HttpService) {}
 
-  getVendorProfile(): Observable<any> {
-    return this.httpService.get('accounts/vendor-registration/');
-  }
-
-  getBuyerProfile(): Observable<any> {
-    return this.httpService.get('accounts/buyer-registration/');
-  }
 }

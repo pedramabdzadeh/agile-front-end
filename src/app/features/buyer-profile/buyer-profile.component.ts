@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {UserManagementService} from '../api-management/services/user-management/user-management.service';
+import {Order} from '../../models/order';
+import {Buyer} from '../../models/buyer';
 
 @Component({
   selector: 'app-buyer-profile',
@@ -6,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buyer-profile.component.scss']
 })
 export class BuyerProfileComponent implements OnInit {
+  orderList: Order[];
+  user: Buyer;
 
-  constructor() { }
+  constructor(private userManagementService: UserManagementService) { }
 
   ngOnInit() {
+    this.userManagementService.getBuyerProfile().subscribe((users: Buyer[]) => {
+      this.user = users[0];
+      console.log(this.user);
+    });
+    this.userManagementService.getBuyerOrders().subscribe((orders: Order[]) => {
+      this.orderList = orders;
+      console.log(this.orderList);
+    });
   }
 
 }

@@ -8,6 +8,8 @@ import {ProductService} from './services/products/product.service';
 import {CategoryService} from './services/categories/category.service';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material';
 import {AccountsService} from './services/accounts/accounts.service';
+import {PurchaseService} from './services/purchase/purchase.service';
+import {UserManagementService} from './services/user-management/user-management.service';
 
 
 
@@ -24,7 +26,9 @@ import {AccountsService} from './services/accounts/accounts.service';
     TokenHandlerService,
     ProductService,
     CategoryService,
-    AccountsService
+    AccountsService,
+    PurchaseService,
+    UserManagementService,
 
   ]
 })
