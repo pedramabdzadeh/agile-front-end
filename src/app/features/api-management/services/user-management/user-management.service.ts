@@ -15,13 +15,13 @@ export class UserManagementService {
 
   }
 
-  getBuyerProfile(): Observable<Buyer> {
+  getBuyerProfile(): Observable<Buyer[]> {
     // @ts-ignore
-    return this.httpService.get<Buyer>('accounts/buyer-profile');
+    return this.httpService.get<Buyer[]>('accounts/buyer-profile');
   }
 
-  getBuyerOrders(): Observable<Order> {
+  getBuyerOrders(): Observable<Order[]> {
     // @ts-ignore
-    return this.httpService.get<Order>('purchase/order');
+    return this.httpService.get<Order[]>('purchase/order');
   }
 }
