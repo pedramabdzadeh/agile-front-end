@@ -1,0 +1,56 @@
+<app-top-nav>
+</app-top-nav>
+<app-categories>
+</app-categories>
+
+<main class="purchase-page">
+  <div class="cart-products">
+    <div class="title">
+      <span>
+        سبد خرید
+      </span>
+    </div>
+    <div class="headers">
+      <div>
+        عنوان
+      </div>
+      <div>
+        فروشنده
+      </div>
+      <div>
+        قیمت
+      </div>
+    </div>
+    <div class="cart-item" *ngFor="let item of (cart)?.products">
+      <div class="item-title">
+        <span>
+          {{item.title}}
+        </span>
+      </div>
+      <div>
+        <span>
+        {{item.vendor}}
+        </span>
+      </div>
+      <div>
+        <span>
+          {{item.price}}
+        </span>
+          تومان
+      </div>
+      <button class="delete-item">
+        حذف
+      </button>
+    </div>
+    <div class="cart-item">
+      <div>
+        مجموع
+      </div>
+      <div>
+        {{(cart)?.total_price}} تومان
+      </div>
+    </div>
+
+  </div>
+
+</main>

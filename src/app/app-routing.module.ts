@@ -33,6 +33,10 @@ const routes: Routes = [
     component: ProductDetailsComponent
   },
   {
+    path: 'purchase', loadChildren: () => import('./features/purchase/purchase.module').then(m => m.PurchaseModule),
+    canLoad: [AuthGuard]
+  },
+  {
     path: '', redirectTo: '/home', pathMatch: 'full'
   },
   {
@@ -41,6 +45,7 @@ const routes: Routes = [
   {
     path: 'not-found', component: NotFoundComponent
   },
+
 ];
 
 @NgModule({

@@ -19,13 +19,12 @@ export class VendorProfileComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.newProduct = new Product();
     this.products = [];
     this.productService.productsChange$.subscribe(() => {
       this.getProducts();
     });
     this.route.queryParamMap.subscribe(
-      data => {
+      (data) => {
         if (
           this.route.snapshot.queryParams.q
           || this.route.snapshot.queryParams.categoryID

@@ -23,8 +23,8 @@ export class ProductsListComponent implements OnInit {
         if (this.route.snapshot.queryParams.q || this.route.snapshot.queryParams.categoryID || this.route.snapshot.queryParams.sort) {
           this.productService.listProducts(this.route.snapshot.queryParams.q, this.route.snapshot.queryParams.categoryID,
             this.route.snapshot.queryParams.sort).subscribe(
-            (d: Product[]) => {
-              this.products = d;
+            (products: Product[]) => {
+              this.products = products;
             }
           );
         }  else {

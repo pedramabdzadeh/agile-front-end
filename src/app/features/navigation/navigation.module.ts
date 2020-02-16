@@ -12,9 +12,10 @@ import {SelectDropDownModule} from 'ngx-select-dropdown';
 
 @NgModule({
   declarations: [TopNavComponent, CategoriesComponent, SecondLevelCategoriesComponent],
-  exports: [
-    TopNavComponent
-  ],
+    exports: [
+        TopNavComponent,
+        CategoriesComponent
+    ],
   imports: [
     CommonModule,
     RouterModule,
