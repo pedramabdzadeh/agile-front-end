@@ -17,11 +17,9 @@ export class BuyerProfileComponent implements OnInit {
   ngOnInit() {
     this.userManagementService.getBuyerProfile().subscribe((users: Buyer[]) => {
       this.user = users[0];
-      console.log(this.user);
     });
     this.userManagementService.getBuyerOrders().subscribe((orders: Order[]) => {
       this.orderList = orders;
-      console.log(this.orderList);
     });
   }
 
