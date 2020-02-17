@@ -43,7 +43,7 @@ export class VendorProfileComponent implements OnInit {
           this.route.snapshot.queryParams.q
           || this.route.snapshot.queryParams.categoryID
           || this.route.snapshot.queryParams.sort) {
-          this.productService.listProducts(this.route.snapshot.queryParams.q, this.route.snapshot.queryParams.categoryID,
+          this.productService.listVendorProducts(this.route.snapshot.queryParams.q, this.route.snapshot.queryParams.categoryID,
             this.route.snapshot.queryParams.sort).subscribe(
             (product: Product[]) => {
               this.products = product;
@@ -63,7 +63,8 @@ export class VendorProfileComponent implements OnInit {
         const formData = new FormData();
         formData.append('image', this.newImage, this.newImage.name);
         this.productService.addImage(+data.id, formData).subscribe(() => {
-          this.productService.listProducts().subscribe(
+          this.productService.listVendorProducts()
+            .subscribe(
             (d: Product[]) => {
               this.products = d;
             }

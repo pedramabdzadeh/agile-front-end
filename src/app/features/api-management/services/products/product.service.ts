@@ -21,8 +21,13 @@ export class ProductService {
     return this.httpService.get('products/list-products/', JSON.parse(JSON.stringify(params)));
   }
 
-  listVendorProducts(): Observable<Product[]> {
-    return this.httpService.get<Product[]>('products/vendor-product/');
+  listVendorProducts(searchParam?, categoryParam?, sortParam?): Observable<Product[]> {
+    const params = {
+      search: searchParam,
+      category: categoryParam,
+      sort_price: sortParam,
+    };
+    return this.httpService.get<Product[]>('products/vendor-product/', JSON.parse(JSON.stringify(params)));
   }
 
   addProduct(product: Product) {

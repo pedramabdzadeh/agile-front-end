@@ -48,19 +48,17 @@
   .product-image {
     margin-top: 7%;
     height: 50%;
-    //border-radius: 10px;
   }
 }
 
 .product-title {
-  height: 10%;
+  height: 10vh;
   width: 100%;
   text-align: center;
   color: grey;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  //justify-content: center;
   align-items: center;
   span {
     background-color: #851058;
