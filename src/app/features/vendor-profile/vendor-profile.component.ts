@@ -6,6 +6,7 @@ import {AccountsService} from '../api-management/services/accounts/accounts.serv
 import {Category} from '../../models/category';
 import {CategoryService} from '../api-management/services/categories/category.service';
 import {Observable} from 'rxjs';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-vendor-profile',
@@ -19,6 +20,11 @@ export class VendorProfileComponent implements OnInit {
   newImage: File;
   vendor: any;
   categories$: Observable<Category[]> = this.categoryService.listAll();
+  campaignForm = new FormGroup({
+    start: new FormControl('', Validators.required),
+    end: new FormControl('', Validators.required),
+    discount: new FormControl('', Validators.required)
+  });
 
   constructor(
     private productService: ProductService,
@@ -75,5 +81,14 @@ export class VendorProfileComponent implements OnInit {
   setFile(event: Event) {
     // @ts-ignore
     this.newImage = event.target.files[0];
+  }
+
+  createCampaign() {
+    const body  = {
+      start_datetime: this.campaignForm.get('start').value,
+      end_datetime: this.campaignForm.get('end').value,
+      sale_amount: this.campaignForm.get('discount').value,
+    };
+    this.accountsService.createCampaign(body).subscribe(() => {});
   }
 }

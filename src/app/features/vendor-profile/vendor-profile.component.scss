@@ -82,6 +82,10 @@ main {
   #add, #add-panel {
     width: 40vw;
   }
+  .campaign-container {
+    right: 4vw!important;
+    width: 25vw;
+  }
 }
 @media screen and (max-width: 768px) {
   #add-panel {
@@ -90,6 +94,11 @@ main {
   #add {
     width: 65vw;
     margin-right: 2vh;
+  }
+
+  .campaign-container {
+    right: 1vw !important;
+    width: 30vw !important;
   }
 }
 
@@ -156,13 +165,50 @@ body {
 
 .campaign-container {
   position: fixed;
+  color: dimgrey;
   height: 37vh;
   background-color: white;
   top: 61vh;
   right: 2.3vw;
   width: 20vw;
+  box-sizing: border-box;
+  padding: 2%;
   border: 1px solid lightgrey;
   display: flex;
   flex-direction: column;
+  input {
+    border-width: 0 0 1px 0;
+    width: 80%;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    button {
+      background-color: #851058;
+      cursor: pointer;
+      border-radius: 10px;
+      color: white;
+      &:hover {
+        background-color: #fa1aa7;
+      }
+      &:disabled {
+        cursor: not-allowed;
+        background-color: #4d4d4d;
+      }
 
+    }
+  }
+  span {
+    width: 100%!important;
+    font-weight: bold;
+    height: 10vh;
+    margin-bottom: 5%;
+  }
+  div {
+    margin-top: 1%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
 }

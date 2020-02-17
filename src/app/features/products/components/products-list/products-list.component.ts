@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from '../../models/product';
 import {ProductService} from '../../../api-management/services/products/product.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 
 @Component({
   selector: 'app-products-list',
@@ -11,7 +11,8 @@ import {ActivatedRoute} from '@angular/router';
 export class ProductsListComponent implements OnInit {
   products: Product[] = [];
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     this.products = [];
@@ -40,5 +41,15 @@ export class ProductsListComponent implements OnInit {
         this.products = d;
       }
     );
+  }
+
+  sort(type: string) {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        sort: type,
+      },
+      queryParamsHandling: 'merge'
+    };
+    this.router.navigate(['/products'], navigationExtras).then();
   }
 }

@@ -3,6 +3,14 @@
   <aside>
   </aside>
   <section>
+    <div class="sort-buttons">
+      <button (click)="sort('ascending')">
+        صعودی
+      </button>
+      <button (click)="sort('descending')">
+        نزولی
+      </button>
+    </div>
     <ul class="products-list">
       <li *ngIf="products.length === 0">
         کالایی یافت نشد

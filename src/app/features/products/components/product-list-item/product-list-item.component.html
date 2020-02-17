@@ -14,9 +14,13 @@
       فروش ویژه
     </span>
   </span>
-
+  <span class="product-price before-sale" *ngIf="product.price_before_sale &&
+  product.price_before_sale !== product.price">
+    قیمت قبلی
+    {{product.price_before_sale|number: '1.0-0'}} تومان
+  </span>
   <span class="product-price">
-    {{product.price}} تومان
+    {{product.price|number: '1.0-0'}} تومان
   </span>
   <div class="add-to-cart">
     <button class="add-button" (click)="addToCart()" *ngIf="isLoggedIn() && getUser().type === 'buyer'">

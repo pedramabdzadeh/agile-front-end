@@ -20,6 +20,9 @@
       <div>
         قیمت
       </div>
+      <div>
+        تخفیف
+      </div>
     </div>
     <div class="cart-item" *ngFor="let item of (cart)?.products">
       <div class="item-title" routerLink="/products/{{item.id}}">
@@ -34,20 +37,30 @@
       </div>
       <div>
         <span>
-          {{item.price}}
+          {{item.price|number: '1.0-0'}}
         </span>
           تومان
       </div>
-      <button class="delete-item" (click)="deleteFromCart(item.id)">
+      <div>
+        <span *ngIf="item.price_before_sale" >
+          {{item.price_before_sale - item.price|number: '1.0-0'}}
+        </span>
+        <span *ngIf="item.price_before_sale && item.price_before_sale === item.price">
+          0
+        </span>
+        تومان
+      </div>
+      <button class="delete-item" (click)="deleteFromCart(+item.id)">
         حذف
       </button>
     </div>
+
     <div class="cart-item">
       <div>
         مجموع
       </div>
       <div>
-        {{(cart)?.total_price}} تومان
+        {{(cart)?.total_price|number: '1.0-0'}} تومان
       </div>
     </div>
 

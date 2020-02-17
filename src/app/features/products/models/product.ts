@@ -12,4 +12,5 @@ export interface Product {
   vendor?: number;
   vendor_name?: string;
   category_name?: string;
+  price_before_sale?: number;
 }

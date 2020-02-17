@@ -7,4 +7,7 @@ export class AccountsService {
 
   constructor(private httpService: HttpService) {}
 
+  createCampaign(body: {start_datetime, end_datetime, sale_amount}): Observable<any> {
+    return this.httpService.post<any>('purchase/campaigns/', body);
+  }
 }

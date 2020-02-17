@@ -1,7 +1,36 @@
 <app-top-nav></app-top-nav>
 <app-profile-essentials></app-profile-essentials>
 <div class="campaign-container">
-
+  <span class="title">
+    کمپین
+  </span>
+  <form [formGroup]="campaignForm" (ngSubmit)="createCampaign()">
+    <div>
+      <label for="discount">
+        تخفیف
+      </label>
+      <input id="discount" min="0" max="100" type="number" step="1" formControlName="discount">
+    </div>
+    <div>
+      <label for="start">
+        شروع
+      </label>
+      <input matInput [matDatepicker]="picker" id="start" formControlName="start">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker startView="month"></mat-datepicker>
+    </div>
+    <div>
+      <label for="end">
+        پایان
+      </label>
+      <input matInput [matDatepicker]="picker2" id="end" formControlName="end">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2 startView="month"></mat-datepicker>
+    </div>
+    <button type="submit" [disabled]="!campaignForm.valid">
+      ایجاد
+    </button>
+  </form>
 </div>
 <main>
   <section>
