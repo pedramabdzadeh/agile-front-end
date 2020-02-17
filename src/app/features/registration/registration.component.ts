@@ -32,8 +32,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   signUp() {
-    // this.router.navigate(['/vendor-profile']);
-    // console.log(this.registerForm.controls['userType'].value);
     const user  = {
       email: this.registerForm.controls['username'].value,
       password: this.registerForm.controls['password'].value,

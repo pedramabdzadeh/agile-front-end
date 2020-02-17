@@ -28,7 +28,6 @@ export class ProductListItemComponent implements OnInit, AfterViewInit {
       this.image =
       this.product.image.replace('http://194.5.192.129:8000/media/resources/images/products/', '')
       + '/';
-      console.log(this.image);
       this.changeDetectorRef.detectChanges();
     }
   }
