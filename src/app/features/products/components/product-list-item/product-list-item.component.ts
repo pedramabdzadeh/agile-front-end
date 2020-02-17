@@ -59,7 +59,9 @@ export class ProductListItemComponent implements OnInit, AfterViewInit {
   }
 
   makeExpress() {
-
+    this.productService.makeExpress(this.product).subscribe(() => {
+      window.location.reload();
+    });
   }
 
   showExpress() {

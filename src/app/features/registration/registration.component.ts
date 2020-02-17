@@ -24,7 +24,7 @@ export class RegistrationComponent implements OnInit {
   errorMessage: any;
   private selectedInput: string;
 
-  constructor(private router: Router, private registerService:RegisterService) { }
+  constructor(private router: Router, private registerService: RegisterService) { }
 
   ngOnInit() {
     this.errorHandling();

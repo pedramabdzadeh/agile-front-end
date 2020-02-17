@@ -53,4 +53,8 @@ export class ProductService {
     return this.httpService.putImage('products/image/' + id + '/', body);
   }
 
+  makeExpress(product: Product) {
+    // @ts-ignore
+    return this.httpService.put<Product>('products/express/'+ product.id + '/');
+  }
 }
