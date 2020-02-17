@@ -7,6 +7,7 @@ import {NavigationModule} from '../navigation/navigation.module';
 import {ProductsModule} from '../products/products.module';
 import { ProfileEssentialsComponent } from './components/profile-essentials/profile-essentials.component';
 import {FormsModule} from '@angular/forms';
+import {MatSelectModule} from '@angular/material';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {FormsModule} from '@angular/forms';
         VendorProfileRoutingModule,
         NavigationModule,
         ProductsModule,
-        FormsModule
+        FormsModule,
+        MatSelectModule
 
     ]
 })

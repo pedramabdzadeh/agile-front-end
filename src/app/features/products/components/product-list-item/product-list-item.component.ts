@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {Product} from '../../models/product';
 import {ProductService} from '../../../api-management/services/products/product.service';
 import {LoginService} from '../../../authentication/services/login/login.service';
@@ -9,15 +9,26 @@ import {ActivatedRoute, Route, Router} from '@angular/router';
   templateUrl: './product-list-item.component.html',
   styleUrls: ['./product-list-item.component.scss']
 })
-export class ProductListItemComponent implements OnInit {
+export class ProductListItemComponent implements OnInit, AfterViewInit {
   @Input() product: Product;
   numberOfItems: number;
+  image: string;
   constructor(
     private productService: ProductService,
     private loginService: LoginService,
+    private changeDetectorRef: ChangeDetectorRef,
     private activatedRoute: Router) { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit(): void {
+    if (this.product.image) {
+      this.image = 'http://194.5.192.129:8000/media/' +
+      this.product.image.replace('http://194.5.192.129:8000/media/resources/images/products/', '')
+      + '/';
+      this.changeDetectorRef.detectChanges();
+    }
   }
 
   addToCart() {
@@ -44,5 +55,13 @@ export class ProductListItemComponent implements OnInit {
 
   isLoggedIn(): boolean {
     return !!this.loginService.isLoggedIn();
+  }
+
+  makeExpress() {
+
+  }
+
+  showExpress() {
+    return !this.activatedRoute.url.includes('home');
   }
 }

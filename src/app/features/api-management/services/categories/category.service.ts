@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpService} from '../http/http.service';
+import {Observable} from 'rxjs';
+import {Category} from '../../../../models/category';
 
 @Injectable()
 export class CategoryService {
@@ -7,7 +9,7 @@ export class CategoryService {
     private httpService: HttpService
   ) {}
 
-  listAll() {
-    return this.httpService.get('products/list-categories/');
+  listAll(): Observable<Category[]> {
+    return this.httpService.get<Category[]>('products/list-categories/');
   }
 }

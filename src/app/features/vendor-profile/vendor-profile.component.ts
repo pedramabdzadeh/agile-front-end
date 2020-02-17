@@ -3,6 +3,9 @@ import {Product} from '../products/models/product';
 import {ProductService} from '../api-management/services/products/product.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AccountsService} from '../api-management/services/accounts/accounts.service';
+import {Category} from '../../models/category';
+import {CategoryService} from '../api-management/services/categories/category.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-vendor-profile',
@@ -12,11 +15,13 @@ import {AccountsService} from '../api-management/services/accounts/accounts.serv
 export class VendorProfileComponent implements OnInit {
   products: Product[];
   addPanel: boolean;
-  newProduct: Product = {title: '', price: 0};
+  newProduct: Product = {title: '', price: 0 , category: 0};
   newImage: File;
   vendor: any;
+  categories$: Observable<Category[]> = this.categoryService.listAll();
   constructor(
     private productService: ProductService,
+    private categoryService: CategoryService,
     private accountsService: AccountsService,
     private route: ActivatedRoute) { }
 

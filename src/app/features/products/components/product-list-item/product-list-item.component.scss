@@ -36,6 +36,19 @@
   text-align: center;
   color: grey;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  //justify-content: center;
+  align-items: center;
+  span {
+    background-color: #851058;
+    color: white;
+    width: 7vw;
+    font-weight: bold;
+    cursor: default;
+    height: 4vh;
+    border-radius: 5px;
+  }
 }
 
 .product-image {

@@ -26,7 +26,14 @@
         <span class="image-path">
           {{inputFile.value}}
         </span>
-        <button (click)="add()" [disabled]="!newProduct.title || ! newProduct.price || !inputFile.validity.valid">
+        <label>دسته</label>
+        <mat-select [(ngModel)]="newProduct.category" required>
+          <mat-option *ngFor="let category of (categories$|async)" value="{{category.id}}">
+            {{category.name}}
+          </mat-option>
+        </mat-select>
+        <button (click)="add()" [disabled]="!newProduct.title || !newProduct.price || !inputFile.validity.valid ||
+        newProduct.category === 0">
           اضافه
         </button>
       </li>

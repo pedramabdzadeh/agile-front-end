@@ -52,4 +52,5 @@ export class ProductService {
   addImage(id: number, body): Observable<any> {
     return this.httpService.putImage('products/image/' + id + '/', body);
   }
+
 }
