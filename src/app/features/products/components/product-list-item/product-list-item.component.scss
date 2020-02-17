@@ -18,15 +18,37 @@
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
   .container {
-    width: 70vw;
+    width: 65vw;
+    margin-right: 2vh;
+  }
+  .add-to-cart {
+    height: 12vh!important;
+  }
+
+  .product-title {
+    span {
+      width: 15vw!important;
+    }
+  }
+  .product-image {
+    height: 50%;
   }
 }
 
-@media screen and (max-width: 900px) and (min-width: 700px){
+@media screen and (max-width: 1024px) and (min-width: 768px){
   .container {
     width: 40vw;
+  }
+  .add-to-cart {
+    height: 12vh!important;
+  }
+
+  .product-image {
+    margin-top: 7%;
+    height: 50%;
+    //border-radius: 10px;
   }
 }
 

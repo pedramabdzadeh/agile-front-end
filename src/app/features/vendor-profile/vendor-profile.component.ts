@@ -19,6 +19,7 @@ export class VendorProfileComponent implements OnInit {
   newImage: File;
   vendor: any;
   categories$: Observable<Category[]> = this.categoryService.listAll();
+
   constructor(
     private productService: ProductService,
     private categoryService: CategoryService,

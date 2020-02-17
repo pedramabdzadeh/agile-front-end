@@ -6,15 +6,13 @@
   align-items: center;
   height: auto;
   width: 100%;
-
-
 }
 
 .product-intro {
   box-sizing: border-box;
   padding: 2%;
   background-color: white;
-  height: 80vh;
+  min-height: 80vh;
   width: 97%;
   display: flex;
   flex-direction: row;
@@ -194,3 +192,28 @@
   color: grey;
 }
 
+@media screen and (max-width: 768px) {
+  .product-intro {
+    display: flex;
+    flex-direction: column;
+  }
+  .images {
+    width: 100%;
+  }
+  .vendor-part {
+    width: 100%;
+    min-height: 50vh;
+  }
+  .other {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .product-part {
+    min-height: 50vh;
+  }
+  .descriptions {
+    width: 100%;
+    min-height: 60vh;
+  }
+}

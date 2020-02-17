@@ -91,6 +91,29 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   flex-direction: column;
   align-items: center;
 }
+
+@media screen and (max-width: 768px){
+  .buyer-account-details {
+    margin-right: 1vh;
+    width: 30%;
+  }
+  .increase-credit {
+    input {
+      width: 80%;
+    }
+  }
+  .products-list {
+    margin-right: 9vh !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
+  .increase-credit {
+    input {
+      width: 80%;
+    }
+  }
+}
 .username {
   color: dimgrey;
   height: 7vh;
@@ -164,7 +187,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
   button {
     background-color: #851058;
     color: white;
@@ -177,6 +199,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
   }
   input {
+
     border-width: 0 0 1px 0;
     border-color: #b9b9b9;
   }

@@ -85,10 +85,11 @@ main {
 }
 @media screen and (max-width: 768px) {
   #add-panel {
-    width: 80vw;
+    width: 80vw !important;
   }
   #add {
-    width: 70vw;
+    width: 65vw;
+    margin-right: 2vh;
   }
 }
 
@@ -151,4 +152,17 @@ body {
   justify-self: center;
   align-self: center;
   color: dimgrey;
+}
+
+.campaign-container {
+  position: fixed;
+  height: 37vh;
+  background-color: white;
+  top: 61vh;
+  right: 2.3vw;
+  width: 20vw;
+  border: 1px solid lightgrey;
+  display: flex;
+  flex-direction: column;
+
 }

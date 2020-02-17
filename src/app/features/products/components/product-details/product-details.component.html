@@ -1,5 +1,4 @@
 <app-top-nav>
-
 </app-top-nav>
 
 <main class="product-details">
@@ -14,7 +13,7 @@
       </span>
     </div>
     <div class="images">
-      <img src="../../../../../assets/images/nintendo.jpg">
+      <img [src]="(product$|async)?.image ? (product$|async)?.image : '../../../../../assets/images/No_Image.jpg'">
 
     </div>
     <div class="descriptions">

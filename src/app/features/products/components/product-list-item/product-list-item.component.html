@@ -2,7 +2,7 @@
   <button class="delete-item" *ngIf="canDelete()" (click)="deleteItem()">
     حذف کالا
   </button>
-  <img class="product-image" [src]="product.image"
+  <img class="product-image" [src]="product.image ? product.image: '../../../../../assets/images/No_Image.jpg'"
        [alt]="product.title"
        routerLink="/products/{{product.id}}"/>
 

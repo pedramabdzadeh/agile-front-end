@@ -4,14 +4,14 @@
   </a>
   <app-top-search></app-top-search>
   <button id="login" routerLink="/auth/sign-in" *ngIf="!isLoggedIn()">
-    ورود به حساب کاربری
+    ورود
   </button>
   <button id="logout" *ngIf="isLoggedIn()" (click)="logout()">
     خروج
   </button>
   <button id="panel" *ngIf="isLoggedIn()"
           class="panel" (click)="goToPanel()">
-    پنل کاربری
+    پروفایل
   </button>
   <button class="cart" *ngIf="canShowCart()" id="cart" (click)="onCartClick()" [ngClass]="cartClass">
     <mat-icon svgIcon="cart" class="icon" [matBadge]="itemsNumber" matBadgeColor="accent" matBadgePosition="below before"
