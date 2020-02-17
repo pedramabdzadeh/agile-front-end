@@ -57,7 +57,6 @@ export class VendorProfileComponent implements OnInit {
   }
 
   add() {
-    this.newProduct.category = 1;
     this.productService.addProduct(this.newProduct).subscribe(
       (data: Product) => {
         const formData = new FormData();
