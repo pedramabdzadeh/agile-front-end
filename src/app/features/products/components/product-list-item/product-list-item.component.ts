@@ -3,6 +3,7 @@ import {Product} from '../../models/product';
 import {ProductService} from '../../../api-management/services/products/product.service';
 import {LoginService} from '../../../authentication/services/login/login.service';
 import {ActivatedRoute, Route, Router} from '@angular/router';
+import {log} from 'util';
 
 @Component({
   selector: 'app-product-list-item',
@@ -24,9 +25,10 @@ export class ProductListItemComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     if (this.product.image) {
-      this.image = 'http://194.5.192.129:8000/media/' +
+      this.image =
       this.product.image.replace('http://194.5.192.129:8000/media/resources/images/products/', '')
       + '/';
+      console.log(this.image);
       this.changeDetectorRef.detectChanges();
     }
   }

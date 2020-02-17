@@ -6,12 +6,12 @@
   </a>
   <div *ngIf="showCats" class="categories-pane">
     <div class="first-level-cats">
-      <a *ngFor="let category of categories" class="level-one" (click)="onCategoryClick(category)">
+      <a *ngFor="let category of categories" class="level-one" (click)="onCategoryClick(category)" (mouseenter)="onHover(category)">
         {{category.name}}
       </a>
     </div>
     <div id="detailed-categories" *ngIf="showCats">
-      <app-second-level-categories>
+      <app-second-level-categories [categories]="secondLevelCategories">
       </app-second-level-categories>
     </div>
   </div>

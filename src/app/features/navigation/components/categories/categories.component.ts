@@ -11,7 +11,9 @@ import {NavigationExtras, Router} from '@angular/router';
 })
 export class CategoriesComponent implements OnInit {
   categories: Category[] = [];
+  allCats: Category[] = [];
   showCats = false;
+  secondLevelCategories: Category[] = [];
   constructor(
     private categoryService: CategoryService,
     private productService: ProductService,
@@ -21,6 +23,7 @@ export class CategoriesComponent implements OnInit {
   ngOnInit() {
     this.categoryService.listAll().subscribe(
       (result: Category[]) => {
+        this.allCats = result;
         for (const category of result) {
           if (category.level === 1) {
             this.categories.push(category);
@@ -46,5 +49,14 @@ export class CategoriesComponent implements OnInit {
       queryParamsHandling: 'merge'
     };
     this.router.navigate(['/products'], navigationExtras).then();
+  }
+
+  onHover(category: Category) {
+    this.secondLevelCategories = [];
+    this.allCats.forEach(cat => {
+      if (cat.parent_category === category.id) {
+        this.secondLevelCategories.push(cat);
+      }
+    });
   }
 }
