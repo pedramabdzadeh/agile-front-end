@@ -15,7 +15,7 @@
     {{product.price}} تومان
   </span>
   <div class="add-to-cart">
-    <button class="add-button" (click)="addToCart()" *ngIf="getUser().type === 'buyer'">
+    <button class="add-button" (click)="addToCart()" *ngIf="isLoggedIn() && getUser().type === 'buyer'">
       افزودن به سبد خرید
     </button>
   </div>

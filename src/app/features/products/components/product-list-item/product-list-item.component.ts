@@ -41,4 +41,8 @@ export class ProductListItemComponent implements OnInit {
   getUser(): {username, type, name} {
     return this.loginService.getUser();
   }
+
+  isLoggedIn(): boolean {
+    return !!this.loginService.isLoggedIn();
+  }
 }

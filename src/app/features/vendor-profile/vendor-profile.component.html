@@ -3,7 +3,7 @@
 <main>
   <section>
     <ul class="products-list">
-      <li *ngIf="products.length === 0">	
+      <li *ngIf="products.length === 0">
         کالایی یافت نشد
       </li>
       <li *ngFor="let product of products">
@@ -20,9 +20,13 @@
         <label for="price" >قیمت</label>
         <input type="number" id="price" placeholder="قیمت" [(ngModel)]="newProduct.price"
                name="price" step="1000" min="0">
-        <label for="image" class="file-label" (click)="inputFile.click()">  انتخاب عکس</label>
-        <input type="file" id="image" placeholder="عکس" class="input-file" #inputFile>
-        <button (click)="add()">
+
+        <input type="file" id="image" placeholder="عکس" class="custom-file-input" accept="image/x-png,image/gif, image/jpeg"
+               #inputFile required (change)="setFile($event)">
+        <span class="image-path">
+          {{inputFile.value}}
+        </span>
+        <button (click)="add()" [disabled]="!newProduct.title || ! newProduct.price || !inputFile.validity.valid">
           اضافه
         </button>
       </li>

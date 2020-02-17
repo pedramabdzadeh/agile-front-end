@@ -4,7 +4,7 @@
 
 <main class="product-details">
   <div class="category">
-    {{(product$|async)?.category}}
+    {{(product$|async)?.category_name}}
   </div>
 
   <div class="product-intro">
@@ -30,7 +30,7 @@
             <label>
               فروشنده
             </label>
-               {{(product$|async)?.vendor}}
+               {{(product$|async)?.vendor_name}}
           </div>
           <div class="price">
             <span>

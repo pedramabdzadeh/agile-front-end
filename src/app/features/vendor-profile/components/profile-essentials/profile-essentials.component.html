@@ -1,15 +1,20 @@
-<div>
-  <img id="logo"  src="../../../../../assets/images/logo.png" alt="logo">
-  <span id="title" *ngIf="!editTitle">
-    {{title}}
+<div class="buyer-account-details">
+  <img class="logo"  src="../../../../../assets/images/logo.png" alt="logo">
+  <span class="username">
+    {{user?.name}}
   </span>
-  <input id="title-edit" *ngIf="editTitle" value="{{title}}" placeholder="عنوان" [(ngModel)]="title"
-         (focusout)="editTitle = false">
-  <button id="apply" *ngIf="editTitle" (click)="editTitle = false">
-    تایید
-  </button>
-  <span id="credit">
-    اعتبار: {{'200'}}تومان
-  </span>
-  <img src="../../../../../assets/images/edit.svg" id="edit" (click)="editTitle = true" *ngIf="!editTitle">
+  <div class="credit">
+    <span>
+      اعتبار
+    </span>
+    <span>
+      {{user?.credit}}
+    </span>
+  </div>
+  <div class="increase-credit">
+    <input type="number" step="10000" min="10000" value="10000" #amount>
+    <button (click)="increaseCredit(+amount.value)">
+      افزایش اعتبار
+    </button>
+  </div>
 </div>

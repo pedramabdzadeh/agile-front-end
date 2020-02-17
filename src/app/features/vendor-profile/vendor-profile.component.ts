@@ -12,7 +12,9 @@ import {AccountsService} from '../api-management/services/accounts/accounts.serv
 export class VendorProfileComponent implements OnInit {
   products: Product[];
   addPanel: boolean;
-  newProduct: Product;
+  newProduct: Product = {title: '', price: 0};
+  newImage: File;
+  vendor: any;
   constructor(
     private productService: ProductService,
     private accountsService: AccountsService,
@@ -45,14 +47,27 @@ export class VendorProfileComponent implements OnInit {
   add() {
     this.newProduct.category = 1;
     this.productService.addProduct(this.newProduct).subscribe(
-      data => this.productService.listProducts().subscribe(
-        (d: Product[]) => this.products = d
-      )
+      (data: Product) => {
+        const formData = new FormData();
+        formData.append('image', this.newImage, this.newImage.name);
+        this.productService.addImage(+data.id, formData).subscribe(() => {
+          this.productService.listProducts().subscribe(
+            (d: Product[]) => {
+              this.products = d;
+            }
+          );
+        });
+      }
     );
   }
   getProducts() {
     this.productService.listVendorProducts().subscribe(
       (d: Product[]) => this.products = d
     );
+  }
+
+  setFile(event: Event) {
+    // @ts-ignore
+    this.newImage = event.target.files[0];
   }
 }

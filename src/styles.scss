@@ -65,3 +65,107 @@ body::-webkit-scrollbar-track {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.buyer-account-details {
+  position: fixed;
+  height: 40vh;
+  width: 20%;
+  background-color: white;
+  margin-top: 4.5vh;
+  border: 1px solid lightgrey;
+  margin-right: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.username {
+  color: dimgrey;
+  height: 7vh;
+  font-size: large;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 2px dashed lightgrey;
+
+}
+
+.phone-number, .address {
+  font-size: small;
+  color: dimgrey;
+  display: flex;
+  height: 5vh;
+  flex-direction: column;
+  align-items: center;
+  span:last-of-type {
+    direction: ltr;
+    input {
+      border-width: 0 0 1px 0;
+      border-color: #b9b9b9;
+    }
+    button {
+      color: white;
+      border: none;
+      background-color: #851058;
+      border-radius: 5px;
+      &:hover {
+        background-color: mediumvioletred;
+        cursor: pointer;
+      }
+      &:disabled {
+        background-color: #4d4d4d;
+      }
+    }
+  }
+}
+.address {
+
+  span:last-of-type {
+    direction: rtl;
+  }
+}
+
+.credit {
+  display: flex;
+  flex-direction: column;
+  height: 10vh;
+  width: 10vh;
+  border-radius: 50%;
+  border: 2px dashed #fa1aa7;
+  justify-content: center;
+  margin-top: 5%;
+  align-items: center;
+  span:first-of-type {
+    color: #4d4d4d;
+  }
+  span:last-of-type {
+    color: #4d4d4d;
+    font-weight: bold;
+    font-size: large;
+  }
+}
+
+.increase-credit {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    background-color: #851058;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: small;
+    &:hover {
+      background-color: mediumvioletred;
+      cursor: pointer;
+    }
+  }
+  input {
+    border-width: 0 0 1px 0;
+    border-color: #b9b9b9;
+  }
+}

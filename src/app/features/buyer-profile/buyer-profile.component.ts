@@ -11,8 +11,11 @@ import {Buyer} from '../../models/buyer';
 export class BuyerProfileComponent implements OnInit {
   orderList: Order[];
   user: Buyer;
+  phoneNumber: any;
 
-  constructor(private userManagementService: UserManagementService) { }
+  constructor(
+    private userManagementService: UserManagementService,
+  ) { }
 
   ngOnInit() {
     this.userManagementService.getBuyerProfile().subscribe((users: Buyer[]) => {
@@ -23,4 +26,15 @@ export class BuyerProfileComponent implements OnInit {
     });
   }
 
+  updateBuyerProfile() {
+    this.userManagementService.updateBuyerProfile(this.user).subscribe(result => {
+      this.user = result;
+    });
+  }
+
+  increaseCredit(amount: number) {
+    this.userManagementService.increaseUserCredit(amount).subscribe(() =>
+      window.location.reload()
+    );
+  }
 }

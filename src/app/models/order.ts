@@ -6,5 +6,6 @@ export interface Order {
   phone_number: string;
   delivery_date: string;
   total_price: number;
+  id?: number;
 }
 

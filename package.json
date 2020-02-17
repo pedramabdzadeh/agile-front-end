@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e --port=4202",
+    "webdriver-update": "sudo webdriver-manager update"
   },
   "private": true,
   "dependencies": {
@@ -30,6 +31,7 @@
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "vazir-font": "^22.0.0",
+    "webdriver-manager": "^12.1.7",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

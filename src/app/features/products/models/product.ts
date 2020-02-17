@@ -3,11 +3,13 @@ import {Field} from './field';
 export interface Product {
   title: string;
   price: number;
-  image: any;
+  image?: string;
   category?: number;
-  id: string;
+  id?: string;
   express?: boolean;
   archived?: boolean;
-  specifications: Field[];
+  specifications?: Field[];
   vendor?: number;
+  vendor_name?: string;
+  category_name?: string;
 }

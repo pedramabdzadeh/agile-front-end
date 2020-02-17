@@ -3,8 +3,100 @@
 <app-categories>
 
 </app-categories>
+
+<div class="buyer-account-details">
+  <div class="username">
+    <span>
+      {{user?.name}}
+    </span>
+  </div>
+  <div class="phone-number">
+    <label for="phone-number">
+      تلفن
+    </label>
+    <span>
+      <input id="phone-number" type="text" pattern="^\+989\d{9}$" name="phone-number" [(ngModel)]="user.phone_number"
+             value="{{user?.phone_number}}" #phone>
+      <button (click)="updateBuyerProfile()" [disabled]="!phone.validity.valid">
+        تغییر
+      </button>
+    </span>
+  </div>
+  <div class="address">
+    <label for="address" >
+      آدرس
+    </label>
+    <span>
+      <input id="address" type="text"  name="address" [(ngModel)]="user.address"
+             value="{{user?.address}}">
+      <button (click)="updateBuyerProfile()">
+        تغییر
+      </button>
+    </span>
+  </div>
+  <div class="credit">
+    <span>
+      اعتبار
+    </span>
+    <span>
+      {{user.credit}}
+    </span>
+  </div>
+  <div class="increase-credit">
+    <input type="number" step="10000" min="10000" value="10000" #amount>
+    <button (click)="increaseCredit(amount.value)">
+      افزایش اعتبار
+    </button>
+  </div>
+</div>
 <main class="profile-container">
     <div class="orders-container">
-        1
+      <div class="title">
+        لیست سفارشات پیشین
+      </div>
+      <div class="headers">
+        <div>
+          شماره سفارش
+        </div>
+
+        <div>
+          تاریخ
+        </div>
+        <div>
+          آدرس گیرنده
+        </div>
+        <div>
+          تلفن گیرنده
+        </div>
+        <div>
+          محصولات خریداری شده
+        </div>
+        <div>
+          مجموع پرداختی
+        </div>
+      </div>
+      <div *ngFor="let order of orderList;let i = index" class="order">
+        <div>
+          {{order.id}}
+        </div>
+        <div>
+          {{order.delivery_date}}
+        </div>
+        <div>
+          {{order.address}}
+        </div>
+
+        <div>
+          0{{order.phone_number|slice: 3}}
+        </div>
+        <div class="products">
+          <span *ngFor="let product of order.products" routerLink="/products/{{product.id}}">
+            {{product.title}}
+          </span>
+        </div>
+        <div>
+          {{order.total_price}}
+        </div>
+      </div>
     </div>
 </main>

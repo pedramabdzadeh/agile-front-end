@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {UserManagementService} from '../../../api-management/services/user-management/user-management.service';
+import {Vendor} from '../../../../models/vendor';
 
 @Component({
   selector: 'app-profile-essentials',
@@ -6,12 +8,19 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./profile-essentials.component.scss']
 })
 export class ProfileEssentialsComponent implements OnInit {
-  editTitle: boolean;
-  @Input() title = 'شرکت نینتندو';
+  user: Vendor;
 
-  constructor() { }
+  constructor(private userManagementService: UserManagementService) { }
 
   ngOnInit() {
+    this.userManagementService.getVendorProfile().subscribe((vendors) => {
+      this.user = vendors[0];
+    });
   }
 
+  increaseCredit(value: number) {
+    this.userManagementService.increaseUserCredit(value).subscribe(() => {
+      window.location.reload();
+    });
+  }
 }

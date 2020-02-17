@@ -8,16 +8,25 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('front-end app is running!');
+  it('should go to homepage', () => {
+    page.navigateTo('/home');
+    expect(page.getTitleText()).toEqual('Agile Store');
+  });
+
+  it('should login as vendor', () => {
+    page.navigateTo('/auth/sign-in');
+    const username = page.getElementById('username');
+    username.sendKeys('kabir');
+    const password = page.getElementById('password');
+    password.sendKeys('hk141075');
+    const loginButton = page.getElementById('login-button');
+    loginButton.click().then();
+    browser.waitForAngular().then(() => {
+      browser.driver.sleep(500);
+      expect(browser.getCurrentUrl()).toEqual('http://localhost:4200/vendor-profile');
+    });
   });
 
   afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
   });
 });

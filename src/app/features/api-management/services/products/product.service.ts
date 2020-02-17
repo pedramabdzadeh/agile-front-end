@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpService} from '../http/http.service';
 import {Product} from '../../../products/models/product';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {Cart} from '../../../../models/cart';
 
 @Injectable()
 export class ProductService {
@@ -21,7 +22,6 @@ export class ProductService {
   }
 
   listVendorProducts(): Observable<Product[]> {
-    // @ts-ignore
     return this.httpService.get<Product[]>('products/vendor-product/');
   }
 
@@ -33,8 +33,8 @@ export class ProductService {
     return this.httpService.put('purchase/cart/' + this.id + '/', {id});
   }
 
-  getCart() {
-    return this.httpService.get('purchase/cart/');
+  getCart(): Observable<Cart[]> {
+    return this.httpService.get<Cart[]>('purchase/cart/');
   }
 
   deleteFromCart(id: number) {
@@ -46,7 +46,10 @@ export class ProductService {
   }
 
   getProductDetails(id: number): Observable<Product> {
-    // @ts-ignore
     return this.httpService.get<Product>('products/list-products/' + id + '/');
+  }
+
+  addImage(id: number, body): Observable<any> {
+    return this.httpService.putImage('products/image/' + id + '/', body);
   }
 }
